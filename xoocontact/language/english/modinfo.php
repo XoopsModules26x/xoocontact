@@ -18,7 +18,7 @@
  */
 
 define("_MI_XOO_CONTACT_NAME",                "XooFoo - Contact Us");
-define("_MI_XOO_CONTACT_DESC",                "Contact us module for xoops 2.6.0");
+define("_MI_XOO_CONTACT_DESC",                "XooFoo - Contact Us module for xoops 2.6.0");
 
 define("_MI_XOO_CONTACT_INDEX",               "Form manager");
 define("_MI_XOO_CONTACT_ABOUT",               "About");
