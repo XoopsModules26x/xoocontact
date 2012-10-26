@@ -14,7 +14,7 @@
  * @package         xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
- * @version         $Id: index.php 24 2012-10-15 14:58:15Z Laurent $
+ * @version         $Id$
  */
 
 include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'header.php';
