@@ -26,28 +26,28 @@ switch ($op) {    case 'view':
     $field = $xoocontact_handler->get($xoocontact_id);
     $field->setView();
     $xoocontact_handler->insert($field);
-    redirect_header('index.php', 5, _AM_XOO_CONTACT_SAVED);
+    $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
     break;
 
     case 'hide':
     $field = $xoocontact_handler->get($xoocontact_id);
     $field->setHide();
     $xoocontact_handler->insert($field);
-    redirect_header('index.php', 5, _AM_XOO_CONTACT_SAVED);
+    $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
     break;
 
     case 'req':
     $field = $xoocontact_handler->get($xoocontact_id);
     $field->setRequired();
     $xoocontact_handler->insert($field);
-    redirect_header('index.php', 5, _AM_XOO_CONTACT_SAVED);
+    $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
     break;
 
     case 'notreq':
     $field = $xoocontact_handler->get($xoocontact_id);
     $field->setNotRequired();
     $xoocontact_handler->insert($field);
-    redirect_header('index.php', 5, _AM_XOO_CONTACT_SAVED);
+    $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
     break;
 
     default:    // heaser
