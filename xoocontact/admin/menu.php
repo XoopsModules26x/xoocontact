@@ -24,6 +24,11 @@ $adminmenu[$i]['link']     = 'admin/index.php';
 $adminmenu[$i]['icon']     = 'home.png';
 
 $i++;
+$adminmenu[$i]['title']    = _MI_XOO_CONTACT_PREFERENCES;
+$adminmenu[$i]['link']     = 'admin/preferences.php';
+$adminmenu[$i]['icon']     = 'administration.png';
+
+$i++;
 $adminmenu[$i]['title']    = _MI_XOO_CONTACT_ABOUT;
 $adminmenu[$i]['link']     = 'admin/about.php';
 $adminmenu[$i]['icon']     = 'about.png';

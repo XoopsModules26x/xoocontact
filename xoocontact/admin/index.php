@@ -62,10 +62,10 @@ switch ($op) {    case 'view':
     $admin_page = new XoopsModuleAdmin();
 
     $admin_page->addInfoBox(_AM_XOO_CONTACT_MANAGER);
-    $admin_page->addInfoBoxLine( $xoops->tpl->fetch('db:xoocontact_fields_manager.html') );
+    $admin_page->addInfoBoxLine( $xoops->tpl->fetch('admin:xoocontact|xoocontact_fields_manager.html') );
 
     $admin_page->renderIndex();
-    $xoops->footer();
     break;
 }
+include dirname(__FILE__) . '/footer.php';
 ?>

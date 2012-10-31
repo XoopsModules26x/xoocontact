@@ -68,58 +68,22 @@ $modversion['onInstall'] = '';
 // JQuery
 $modversion['jquery'] = 1;
 
-// Menu
-$modversion['hasMain'] = 1;
-
-// Templates
-$cpt = 1;
-$modversion['templates'][$cpt]['file']        = 'xoocontact_form.html';
-$modversion['templates'][$cpt]['description'] = '';
-
-// Admin Templates
-$cpt++;
-$modversion['templates'][$cpt]['file']        = 'xoocontact_fields_manager.html';
-$modversion['templates'][$cpt]['description'] = '';
-$modversion['templates'][$cpt]['type']        = 'admin';
-
 // Mysql file
 $modversion['sqlfile']['mysql'] = 'sql/' . $xoopsConfig['language'] . '.mysql.sql';
 
 // Tables created by sql file (without prefix!)
 $modversion['tables'][1] = 'xoocontact_fields';
 
+// Menu
+$modversion['hasMain'] = 1;
+
+// Templates
+$i = 1;
+$modversion['templates'][$i]['file']        = 'xoocontact_form.html';
+$modversion['templates'][$i]['description'] = '';
+
 // blocks
 $i = 0;
 
 // Preferences
-$i = 0;
-$modversion['config'][$i]['name']           = 'xoocontact_message';
-$modversion['config'][$i]['title']          = '_MI_XOO_CONTACT_MESSAGE';
-$modversion['config'][$i]['description']    = '_MI_XOO_CONTACT_MESSAGE_DESC';
-$modversion['config'][$i]['formtype']       = 'textarea';
-$modversion['config'][$i]['valuetype']      = 'text';
-$modversion['config'][$i]['default']        = _MI_XOO_CONTACT_MESSAGE_DEFAULT;
-$modversion['config'][$i]['category']       = 'global';
-
-$i++;
-$modversion['config'][$i]['name']           = 'xoocontact_copymessage';
-$modversion['config'][$i]['title']          = '_MI_XOO_CONTACT_COPYMESSAGE';
-$modversion['config'][$i]['description']    = '_MI_XOO_CONTACT_COPYMESSAGE_DESC';
-$modversion['config'][$i]['formtype']       = 'yesno';
-$modversion['config'][$i]['valuetype']      = 'int';
-$modversion['config'][$i]['default']        = 0;
-$modversion['config'][$i]['category']       = 'global';
-
-/*
-$i++;
-$editors = XoopsLists::getDirListAsArray(XOOPS_ROOT_PATH . '/class/xoopseditor');
-$modversion['config'][$i]['name']           = 'xoocontact_editor';
-$modversion['config'][$i]['title']          = '_MI_XOO_CONTACT_EDITOR';
-$modversion['config'][$i]['description']    = '';
-$modversion['config'][$i]['formtype']       = 'select';
-$modversion['config'][$i]['valuetype']      = 'text';
-$modversion['config'][$i]['default']        = 'dhtmltextarea';
-$modversion['config'][$i]['options']        = $editors;
-$modversion['config'][$i]['category']       = 'global';
-*/
 ?>

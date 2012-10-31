@@ -21,6 +21,7 @@ define("_MI_XOO_CONTACT_NAME",                "XooFoo - Nous contactez");
 define("_MI_XOO_CONTACT_DESC",                "XooFoo - Nous contactez module pour xoops 2.6.0");
 
 define("_MI_XOO_CONTACT_INDEX",               "Gestionnaire de formulaire");
+define("_MI_XOO_CONTACT_PREFERENCES",         "Pr&#233;f&#233;rences");
 define("_MI_XOO_CONTACT_ABOUT",               "Au sujet de");
 
 // Preferences
@@ -29,6 +30,7 @@ define("_MI_XOO_CONTACT_MESSAGE_DESC",        "");
 define("_MI_XOO_CONTACT_MESSAGE_DEFAULT",     "");
 
 define("_MI_XOO_CONTACT_EDITOR",              "Editeur");
+
 define("_MI_XOO_CONTACT_COPYMESSAGE",         "Proposer une copie du message");
 define("_MI_XOO_CONTACT_COPYMESSAGE_DESC",    "");
 ?>

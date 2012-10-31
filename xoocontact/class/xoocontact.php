@@ -189,7 +189,6 @@ class XoocontactXoocontactHandler extends XoopsPersistableObjectHandler
 
     public function renderForm()
     {        global $xoops, $xoopsModule;
-        $xoops->tpl->assign('test', $xoops->getModuleConfig('xoocontact_message', 'xoocontact') );
         $xoops->theme->addStylesheet('modules/xoocontact/css/module.css');
         $fields = $this->getDisplay();
 
@@ -197,7 +196,13 @@ class XoocontactXoocontactHandler extends XoopsPersistableObjectHandler
 
         foreach ($fields as $k => $field) {            $ele = $field->getForm( $contact_form );
             if ( is_object( $ele ) && (is_subclass_of($ele, 'XoopsFormElement') || is_subclass_of($ele, 'XoopsFormTextArea'))) {                $contact_form->addElement($ele, $field->getVar('xoocontact_required') );            }        }
-        if ( $xoops->getModuleConfig('xoocontact_copymessage', 'xoocontact')) {            $contact_form->addElement( new XoopsFormRadioYN(_XOO_CONTACT_COPYMESSAGE, 'message_copy', 0), true );
+
+        include_once dirname ( __FILE__ ) . '/xoopreferences.php';
+        $object = new XooPreferences();
+        $xooContact_config = $object->config;
+
+        $xoops->tpl->assign('welcome', $xooContact_config['xoocontact_welcome'] );
+        if ( $xooContact_config['xoocontact_copymessage']) {            $contact_form->addElement( new XoopsFormRadioYN(_XOO_CONTACT_COPYMESSAGE, 'message_copy', 0), true );
         }
 
         $contact_form->addElement(new XoopsFormCaptcha(null,null,false), true);

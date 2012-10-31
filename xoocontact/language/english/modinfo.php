@@ -21,6 +21,7 @@ define("_MI_XOO_CONTACT_NAME",                "XooFoo - Contact Us");
 define("_MI_XOO_CONTACT_DESC",                "XooFoo - Contact Us module for xoops 2.6.0");
 
 define("_MI_XOO_CONTACT_INDEX",               "Form manager");
+define("_MI_XOO_CONTACT_PREFERENCES",         "Preferences");
 define("_MI_XOO_CONTACT_ABOUT",               "About");
 
 // Preferences
@@ -29,6 +30,7 @@ define("_MI_XOO_CONTACT_MESSAGE_DESC",        "");
 define("_MI_XOO_CONTACT_MESSAGE_DEFAULT",     "");
 
 define("_MI_XOO_CONTACT_EDITOR",              "Editor");
+
 define("_MI_XOO_CONTACT_COPYMESSAGE",         "Propose a copy of this message");
 define("_MI_XOO_CONTACT_COPYMESSAGE_DESC",    "");
 ?>
