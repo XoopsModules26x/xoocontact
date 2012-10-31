@@ -35,7 +35,7 @@ switch ($op) {    case 'save':
     $object = new XooPreferences();
     foreach ( array_keys($_POST) as $k) {        if ( strstr($k, $xoops->module->dirname() . '_') ) {            $config[$k] = $_POST[$k];        }    }
     $object->writeConfig( $config );
-    $xoops->redirect("preferences.php", 3, _AM_XOO_GHOST_SAVED);
+    $xoops->redirect("preferences.php", 3, _AM_XOO_CONTACT_SAVED);
     break;
     default:
     $form = $xoops->getModuleForm(null, 'preferences', 'xoocontact');

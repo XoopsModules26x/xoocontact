@@ -60,7 +60,19 @@ switch ($op) {
     case 'default':
     default:
     $xoops->header('xoocontact_form.html');
-    $xoocontact_handler->renderForm();
+    $xoops->theme->addStylesheet('modules/xoocontact/css/module.css');
+
+    include_once dirname( __FILE__  ) . '/class/xoopreferences.php';
+    $object = new XooPreferences();
+    $xooContact_config = $object->config;
+
+    $xoops->tpl->assign('moduletitle', $xoops->module->name() );
+    $xoops->tpl->assign('welcome', $xooContact_config['xoocontact_welcome'] );
+
+    $form = $xoops->getModuleForm(null, 'contact', 'xoocontact');
+    $form->ContactForm();
+    $form->render();
+
     $xoops->footer();
     break;
 }

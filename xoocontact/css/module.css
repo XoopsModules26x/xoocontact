@@ -1,6 +1,7 @@
-.xoocontactMsg {    padding: 1em;
-    margin-bottom: 1em;
-    text-align:center;    background-color: #FFF6BF;
-    color: #817134;
-    border: 2px solid #FFD324;
+.xoocontactMsg {    padding:               1em;
+    margin-bottom:         1em;
+    text-align:            center;
+    background-color:      #f1f1f1;
+    color:                 #049cd9;
+    border:                2px solid #049cd9;
 }
