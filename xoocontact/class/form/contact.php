@@ -62,7 +62,7 @@ class XoocontactContactForm extends XoopsThemeForm
 
     public function getForm( $fieldObj )
     {
-        global $xoops, $system;
+        global $xoops, $system, $xooContact_config;
         $myts = MyTextSanitizer::getInstance();
 
         $ele = '';
@@ -100,7 +100,7 @@ class XoocontactContactForm extends XoopsThemeForm
             $editor_configs['cols'] = 100;
             $editor_configs['width'] = '80%';
             $editor_configs['height'] = '500px';
-            $editor_configs['editor'] = $xoops->getModuleConfig('xoocontact_editor', 'xoocontact');
+            $editor_configs['editor'] = $xooContact_config['xoocontact_editor'];
             $ele = new XoopsFormEditor($title, $field, $editor_configs);
             break;
 
