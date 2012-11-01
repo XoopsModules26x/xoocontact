@@ -35,6 +35,10 @@ class XoocontactContactForm extends XoopsThemeForm
     public function ContactForm()
     {        global $xoops, $xoocontact_handler;
 
+        include_once dirname(dirname ( __FILE__ )) . '/xoopreferences.php';
+        $config = new XooPreferences();
+        $xooContact_config = $config->config;
+
         parent::__construct('', "xoocontact_form", "index.php", 'post', true, 'horizontal');
 
         $fields = $xoocontact_handler->getDisplay();
@@ -43,10 +47,6 @@ class XoocontactContactForm extends XoopsThemeForm
             if ( is_object( $ele ) && (is_subclass_of($ele, 'XoopsFormElement') || is_subclass_of($ele, 'XoopsFormTextArea'))) {                $this->addElement( $ele, $field->getVar('xoocontact_required') );
             }
         }
-
-        include_once dirname(dirname ( __FILE__ )) . '/xoopreferences.php';
-        $object = new XooPreferences();
-        $xooContact_config = $object->config;
 
         if ( $xooContact_config['xoocontact_copymessage']) {
             $this->addElement( new XoopsFormRadioYN(_XOO_CONTACT_COPYMESSAGE, 'message_copy', 0), true );
