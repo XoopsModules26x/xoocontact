@@ -19,8 +19,7 @@
 
 include dirname(__FILE__) . '/header.php';
 
-$admin_page = new XoopsModuleAdmin();
-$admin_page->renderNavigation( basename($_SERVER['SCRIPT_NAME']) );
+$xoops->loadLanguage('preferences', 'xoocontact');
 
 switch ($op) {    case 'save':
     if (!$xoops->security->check()) {
@@ -32,9 +31,8 @@ switch ($op) {    case 'save':
 
     // Write configuration file
     include_once dirname( dirname ( __FILE__ ) ) . '/class/xoopreferences.php';
-    $object = new XooPreferences();
-    foreach ( array_keys($_POST) as $k) {        if ( strstr($k, $xoops->module->dirname() . '_') ) {            $config[$k] = $_POST[$k];        }    }
-    $object->writeConfig( $config );
+    $object = new XooGhostPreferences();
+    $object->writeConfig( $object->Prepare2Save() );
     $xoops->redirect("preferences.php", 3, _AM_XOO_CONTACT_SAVED);
     break;
     default:
