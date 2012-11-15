@@ -62,9 +62,7 @@ switch ($op) {
     $xoops->header('xoocontact_form.html');
     $xoops->theme->addStylesheet('modules/xoocontact/css/module.css');
 
-    include_once dirname( __FILE__  ) . '/class/xoopreferences.php';
-    $object = new XooPreferences();
-    $xooContact_config = $object->config;
+    $xooContact_config = XooContactPreferences::getInstance()->getConfig();
 
     $xoops->tpl->assign('moduletitle', $xoops->module->name() );
     $xoops->tpl->assign('welcome', $xooContact_config['xoocontact_welcome'] );

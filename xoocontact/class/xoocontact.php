@@ -22,7 +22,7 @@ defined('XOOPS_ROOT_PATH') or die('Restricted access');
 class Xoocontact extends XoopsObject
 {
     // constructor
-	public function __construct()
+    public function __construct()
 	{
 		$this->initVar('xoocontact_id'           , XOBJ_DTYPE_INT     , 0            , false , 11);
 		$this->initVar('xoocontact_description'  , XOBJ_DTYPE_TXTBOX  , ''           , true  , 255);

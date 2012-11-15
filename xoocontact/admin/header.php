@@ -33,11 +33,12 @@ if ( isset( $_GET ) ){
 
 $script_name = basename($_SERVER['SCRIPT_NAME'], '.php');
 
+XoopsLoad::load('xoopreferences', 'xoocontact');
 XoopsLoad::load('system', 'system');
 $system = System::getInstance();
 
 $xoops = Xoops::getInstance();
-$xoops->header('xoocontact_' . $script_name . '.html');
+if ($script_name != 'about') {    $xoops->header('xoocontact_' . $script_name . '.html');} else {    $xoops->header();}
 
 $admin_page = new XoopsModuleAdmin();
 $admin_page->renderNavigation( basename($_SERVER['SCRIPT_NAME']) );

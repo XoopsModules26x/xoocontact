@@ -26,9 +26,7 @@ class XoocontactPreferencesForm extends XoopsThemeForm
      * @param null $obj
      */
     public function __construct()
-    {        include_once dirname( dirname ( __FILE__ ) ) . '/xoopreferences.php';
-        $object = new XooPreferences();
-        $this->_config = $object->config;
+    {        $this->_config = XooContactPreferences::getInstance()->getConfig();
     }
 
     /**

@@ -30,8 +30,7 @@ switch ($op) {    case 'save':
     $xoocontact_copymessage = $system->CleanVars($_POST, 'xoocontact_copymessage', 0, 'int');
 
     // Write configuration file
-    include_once dirname( dirname ( __FILE__ ) ) . '/class/xoopreferences.php';
-    $object = new XooGhostPreferences();
+    $object = XooContactPreferences::getInstance();
     $object->writeConfig( $object->Prepare2Save() );
     $xoops->redirect("preferences.php", 3, _AM_XOO_CONTACT_SAVED);
     break;

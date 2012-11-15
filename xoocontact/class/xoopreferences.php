@@ -19,7 +19,7 @@
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
-class XooPreferences
+class XooContactPreferences
 {
     public $config = array();
     public $basicConfig = array();
@@ -27,7 +27,7 @@ class XooPreferences
     public $configFile;
 
     public function __construct()
-    {        global $xoops;
+    {        $xoops = Xoops::getInstance();
         $this->configFile = 'config.' . $xoops->module->dirname() . '.php';
 
         $this->configPath = XOOPS_VAR_PATH . '/configs/';
@@ -39,15 +39,30 @@ class XooPreferences
         }
     }
 
-    public function XooPreferences()
+    public function XooContactPreferences()
     {        $this->__construct();    }
 
+    static public function getInstance()
+    {
+        static $instance;
+        if (!isset($instance)) {
+            $class = __CLASS__;
+            $instance = new $class();
+        }
+        return $instance;
+    }
+
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
     /**
-     * XooPreferences::loadConfig()
+     * XooContactPreferences::loadConfig()
      *
      * @return array
      */
-    function loadConfig() {
+    public function loadConfig() {
         if ( !$config = $this->readConfig() ) {
             $config = $this->loadBasicConfig();
             $this->writeConfig($config );
@@ -57,11 +72,11 @@ class XooPreferences
 
 
     /**
-     * XooPreferences::loadBasicConfig()
+     * XooContactPreferences::loadBasicConfig()
      *
      * @return array
      */
-    function loadBasicConfig()
+    public function loadBasicConfig()
     {
         if (file_exists($file_path = dirname(dirname( __FILE__ )) . '/include/' . $this->configFile)) {
             $config = include $file_path;
@@ -70,11 +85,11 @@ class XooPreferences
     }
 
     /**
-     * XooPreferences::readConfig()
+     * XooContactPreferences::readConfig()
      *
      * @return array
      */
-    function readConfig()
+    public function readConfig()
     {
         $file_path = $this->configPath . $this->configFile;
         XoopsLoad::load('XoopsFile');
@@ -83,13 +98,13 @@ class XooPreferences
     }
 
     /**
-     * XooPreferences::writeConfig()
+     * XooContactPreferences::writeConfig()
      *
      * @param string $filename
      * @param array $config
      * @return array
      */
-    function writeConfig($config)
+    public function writeConfig($config)
     {
         $file_path = $this->configPath . $this->configFile;
         XoopsLoad::load('XoopsFile');
@@ -97,9 +112,9 @@ class XooPreferences
         return $file->write( 'return ' . var_export($config, true) . ';');
     }
 
-    function Prepare2Save( $data = null, $module = true)
+    public function Prepare2Save( $data = null, $module = true)
     {
-        global $xoops;
+        $xoops = Xoops::getInstance();
         if ( !isset($data) ) {
             $data = $_POST;
         }

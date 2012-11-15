@@ -20,10 +20,11 @@
 include dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'mainfile.php';
 include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . 'xoocontactmail.php';
 
+XoopsLoad::load('xoopreferences', 'xoocontact');
 XoopsLoad::load('system', 'system');
+$system = System::getInstance();
 
 $xoops = Xoops::getInstance();
-$system = System::getInstance();
 
 if ( isset( $_POST ) ){
     foreach ( $_POST as $k => $v )  {

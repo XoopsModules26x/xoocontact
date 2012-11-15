@@ -23,7 +23,7 @@ class XoocontactMail
 {
     // constructor
     public function __construct()
-    {        global $xoops;        $this->custumPath  = XOOPS_ROOT_PATH . '/themes/' . $xoops->getConfig('theme_set') . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
+    {        $xoops = Xoops::getInstance();        $this->custumPath  = XOOPS_ROOT_PATH . '/themes/' . $xoops->getConfig('theme_set') . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
         $this->defaultPath = XOOPS_ROOT_PATH . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
 
         $this->webmasterMail = $xoops->getConfig('adminmail');

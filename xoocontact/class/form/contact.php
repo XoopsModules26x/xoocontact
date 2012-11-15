@@ -33,11 +33,10 @@ class XoocontactContactForm extends XoopsThemeForm
      * @return void
      */
     public function ContactForm()
-    {        global $xoops, $xoocontact_handler;
+    {        $xoops = Xoops::getInstance();
+        $xooContact_config = XooContactPreferences::getInstance()->getConfig();
 
-        include_once dirname(dirname ( __FILE__ )) . '/xoopreferences.php';
-        $config = new XooPreferences();
-        $xooContact_config = $config->config;
+        global $xoocontact_handler;
 
         parent::__construct('', "xoocontact_form", "index.php", 'post', true, 'horizontal');
 
@@ -62,7 +61,10 @@ class XoocontactContactForm extends XoopsThemeForm
 
     public function getForm( $fieldObj )
     {
-        global $xoops, $system, $xooContact_config;
+        $xoops = Xoops::getInstance();
+        $system = System::getInstance();
+        $xooContact_config = XooContactPreferences::getInstance()->getConfig();
+
         $myts = MyTextSanitizer::getInstance();
 
         $ele = '';
