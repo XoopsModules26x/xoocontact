@@ -17,6 +17,8 @@
  * @version         $Id$
  */
 
+defined('XOOPS_ROOT_PATH') or die('Restricted access');
+
 function xoops_module_install_xoocontact()
 {    $xoops = Xoops::getInstance();
     $folders    = array();
