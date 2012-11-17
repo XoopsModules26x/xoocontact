@@ -21,19 +21,6 @@ defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
 function xoops_module_install_xoocontact()
 {    $xoops = Xoops::getInstance();
-    $folders    = array();
-    $folders[]  = $xoops->path('uploads') . '/xoocontact/images';
-    $images     = array('index.html', 'blank.gif');
-
-    foreach ( $folders as $folder ) {        if ( !xoocontact_mkdirs($folder) ) {
-            return false;
-        } else {
-            foreach ( $images as $image ) {                if ( !xoocontact_copyfile($xoops->path('uploads'), $image, $folder) ) {
-                    return false;
-                }
-            }
-        }
-    }
     xoocontact_mkdirs($xoops->path(XOOPS_VAR_PATH) . '/configs/xoocontact');
     return true;
 }
