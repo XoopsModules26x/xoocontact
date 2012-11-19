@@ -17,16 +17,18 @@
  * @version         $Id$
  */
 
-$adminmenu = array();
 $i = 1;
 $adminmenu[$i]['title']    = _MI_XOO_CONTACT_INDEX;
 $adminmenu[$i]['link']     = 'admin/index.php';
 $adminmenu[$i]['icon']     = 'home.png';
 
-$i++;
-$adminmenu[$i]['title']    = _MI_XOO_CONTACT_PREFERENCES;
-$adminmenu[$i]['link']     = 'admin/preferences.php';
-$adminmenu[$i]['icon']     = 'administration.png';
+$xoops = Xoops::getInstance();
+if ($xoops->isadmin()) {
+    $i++;
+    $adminmenu[$i]['title']    = _MI_XOO_CONTACT_PREFERENCES;
+    $adminmenu[$i]['link']     = 'admin/preferences.php';
+    $adminmenu[$i]['icon']     = 'administration.png';
+}
 
 $i++;
 $adminmenu[$i]['title']    = _MI_XOO_CONTACT_ABOUT;
