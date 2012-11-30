@@ -38,10 +38,10 @@ class XoocontactPreferencesForm extends XoopsThemeForm
         $this->setExtra('enctype="multipart/form-data"');
 
         //xoocontact_welcome
-        $this->addElement( new XoopsFormTextArea(_MI_XOO_CONTACT_MESSAGE, 'xoocontact_welcome', $xoocontact_welcome, 12, 12) );
+        $this->addElement( new XoopsFormTextArea(_XOO_CONFIG_MESSAGE, 'xoocontact_welcome', $xoocontact_welcome, 12, 12) );
 
         //xooghost_main
-        $this->addElement( new XoopsFormRadioYN(_MI_XOO_CONTACT_COPYMESSAGE, 'xoocontact_copymessage', $xoocontact_copymessage) );
+        $this->addElement( new XoopsFormRadioYN(_XOO_CONFIG_COPYMESSAGE, 'xoocontact_copymessage', $xoocontact_copymessage) );
 
         // button
         $button_tray = new XoopsFormElementTray('', '');

@@ -23,14 +23,4 @@ define("_MI_XOO_CONTACT_DESC",                "XooFoo - Nous contactez module po
 define("_MI_XOO_CONTACT_INDEX",               "Gestionnaire de formulaire");
 define("_MI_XOO_CONTACT_PREFERENCES",         "Pr&#233;f&#233;rences");
 define("_MI_XOO_CONTACT_ABOUT",               "Au sujet de");
-
-// Preferences
-define("_MI_XOO_CONTACT_MESSAGE",             "Message qui sera affich&#233; avant que le formulaire");
-define("_MI_XOO_CONTACT_MESSAGE_DESC",        "");
-define("_MI_XOO_CONTACT_MESSAGE_DEFAULT",     "");
-
-define("_MI_XOO_CONTACT_EDITOR",              "Editeur");
-
-define("_MI_XOO_CONTACT_COPYMESSAGE",         "Proposer une copie du message");
-define("_MI_XOO_CONTACT_COPYMESSAGE_DESC",    "");
 ?>

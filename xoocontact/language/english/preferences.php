@@ -17,12 +17,15 @@
  * @version         $Id$
  */
 
-define("_MI_XOO_CONTACT_MESSAGE",             "Message to be displayed before the form");
-define("_MI_XOO_CONTACT_MESSAGE_DESC",        "");
-define("_MI_XOO_CONTACT_MESSAGE_DEFAULT",     "");
+if (!defined("_XOO_CONFIG_SAVED")) {
+    define("_XOO_CONFIG_SAVED",            "Configuration was saved");
+}
+define("_XOO_CONFIG_MESSAGE",             "Message to be displayed before the form");
+define("_XOO_CONFIG_MESSAGE_DESC",        "");
+define("_XOO_CONFIG_MESSAGE_DEFAULT",     "");
 
-define("_MI_XOO_CONTACT_EDITOR",              "Editor");
+define("_XOO_CONFIG_EDITOR",              "Editor");
 
-define("_MI_XOO_CONTACT_COPYMESSAGE",         "Propose a copy of this message");
-define("_MI_XOO_CONTACT_COPYMESSAGE_DESC",    "");
+define("_XOO_CONFIG_COPYMESSAGE",         "Propose a copy of this message");
+define("_XOO_CONFIG_COPYMESSAGE_DESC",    "");
 ?>
