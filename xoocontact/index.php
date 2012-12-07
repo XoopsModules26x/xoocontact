@@ -32,7 +32,7 @@ switch ($op) {
     $contact = array();
     $myts = MyTextSanitizer::getInstance();
     $fields = $xoocontact_handler->getDisplay();
-    foreach( $fields as $k => $field ) {        $contact[$k] = $field->toArray();        if ( $field->getVar('xoocontact_formtype') == 'mail' ) {            if ( !( $_POST['xoocontact_field' . $k] = $xoops->checkEmail( $myts->stripSlashesGPC($_POST['xoocontact_field' . $k]) ) ) ) {
+    foreach( $fields as $k => $field ) {        $contact[$k] = $field->getValues();        if ( $field->getVar('xoocontact_formtype') == 'mail' ) {            if ( !( $_POST['xoocontact_field' . $k] = $xoops->checkEmail( $myts->stripSlashesGPC($_POST['xoocontact_field' . $k]) ) ) ) {
                 $xoops->redirect('index.php', 3, _XOO_CONTACT_INVALIDMAIL);
             }
         }

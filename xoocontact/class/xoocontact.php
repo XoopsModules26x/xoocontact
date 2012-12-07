@@ -68,11 +68,11 @@ class Xoocontact extends XoopsObject
         return true;
     }
 
-    public function toArray()
+    public function getValues($keys = null, $format = null, $maxDepth = null)
     {        XoopsLoad::load('xoopsload');
         $autoload = XoopsLoad::loadConfig( 'xoocontact' );
 
-        $ret = $this->getValues();
+        $ret = parent::getValues();
         if (in_array($this->getVar('xoocontact_id'), $autoload['can_be_hidden'])) {            $ret['can_be_hidden'] = false;
         } else {            $ret['can_be_hidden'] = true;
         }
@@ -99,9 +99,7 @@ class XoocontactXoocontactHandler extends XoopsPersistableObjectHandler
     {        $criteria = new CriteriaCompo();
         $criteria->setSort( 'xoocontact_order' );
         $criteria->setOrder( 'asc' );
-        $retObj = $this->getObjects($criteria, null, true);
-        foreach ($retObj as $k => $v) {            $ret[$k] = $v->toArray();        }
-        return $ret;
+        return $this->getObjects($criteria, null, false);
     }
 
     public function getDisplay( $asObject = true )
