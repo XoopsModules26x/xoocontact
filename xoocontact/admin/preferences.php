@@ -22,8 +22,8 @@ include dirname(__FILE__) . '/header.php';
 $xoops->loadLanguage('preferences', 'xoocontact');
 
 switch ($op) {    case 'save':
-    if (!$xoops->security->check()) {
-        $xoops->redirect("preferences.php", 3, implode('<br />', $xoops->security->getErrors()));
+    if (!$xoops->security()->check()) {
+        $xoops->redirect("preferences.php", 3, implode('<br />', $xoops->security()->getErrors()));
     }
 
     $xoocontact_welcome     = $system->CleanVars($_POST, 'xoocontact_welcome', '', 'string');
@@ -37,7 +37,7 @@ switch ($op) {    case 'save':
     default:
     $form = $xoops->getModuleForm(null, 'preferences', 'xoocontact');
     $form->PreferencesForm();
-    $form->render();
+    $form->display();
 }
 include dirname(__FILE__) . '/footer.php';
 ?>

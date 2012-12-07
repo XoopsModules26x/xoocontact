@@ -52,19 +52,19 @@ switch ($op) {    case 'view':
 
     default:    // heaser
     $xoops->header();
-    $xoops->theme->addStylesheet('modules/xoocontact/css/moduladmin.css');
+    $xoops->theme()->addStylesheet('modules/xoocontact/css/moduladmin.css');
 
     // Get xoocontact_fields handler & datas
     $xoocontact_handler = $xoops->getModuleHandler('xoocontact', 'xoocontact');
     $fields = $xoocontact_handler->renderAdminList();
-    $xoops->tpl->assign('fields', $fields);
+    $xoops->tpl()->assign('fields', $fields);
 
     $admin_page = new XoopsModuleAdmin();
 
     $admin_page->addInfoBox(_AM_XOO_CONTACT_MANAGER);
-    $admin_page->addInfoBoxLine( $xoops->tpl->fetch('admin:xoocontact|xoocontact_fields_manager.html') );
+    $admin_page->addInfoBoxLine( $xoops->tpl()->fetch('admin:xoocontact|xoocontact_fields_manager.html') );
 
-    $admin_page->renderIndex();
+    $admin_page->displayIndex();
     break;
 }
 include dirname(__FILE__) . '/footer.php';

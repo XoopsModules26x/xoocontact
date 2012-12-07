@@ -99,8 +99,9 @@ class XoocontactXoocontactHandler extends XoopsPersistableObjectHandler
     {        $criteria = new CriteriaCompo();
         $criteria->setSort( 'xoocontact_order' );
         $criteria->setOrder( 'asc' );
-
-        return $this->getObjects($criteria, null, false);
+        $retObj = $this->getObjects($criteria, null, true);
+        foreach ($retObj as $k => $v) {            $ret[$k] = $v->toArray();        }
+        return $ret;
     }
 
     public function getDisplay( $asObject = true )

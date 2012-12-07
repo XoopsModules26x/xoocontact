@@ -21,7 +21,7 @@ include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'header.php';
 
 switch ($op) {
     case 'submit':
-    if ( !$xoops->security->check() ) {        $xoops->redirect('index.php', 3, implode('<br />', $xoops->security->getErrors()));
+    if ( !$xoops->security()->check() ) {        $xoops->redirect('index.php', 3, implode('<br />', $xoops->security()->getErrors()));
     }
 
     XoopsLoad::load('xoopscaptcha');
@@ -60,16 +60,16 @@ switch ($op) {
     case 'default':
     default:
     $xoops->header('xoocontact_form.html');
-    $xoops->theme->addStylesheet('modules/xoocontact/css/module.css');
+    $xoops->theme()->addStylesheet('modules/xoocontact/css/module.css');
 
     $xooContact_config = XooContactPreferences::getInstance()->getConfig();
 
-    $xoops->tpl->assign('moduletitle', $xoops->module->name() );
-    $xoops->tpl->assign('welcome', $xooContact_config['xoocontact_welcome'] );
+    $xoops->tpl()->assign('moduletitle', $xoops->module->name() );
+    $xoops->tpl()->assign('welcome', $xooContact_config['xoocontact_welcome'] );
 
     $form = $xoops->getModuleForm(null, 'contact', 'xoocontact');
     $form->ContactForm();
-    $form->render();
+    $form->display();
 
     $xoops->footer();
     break;
