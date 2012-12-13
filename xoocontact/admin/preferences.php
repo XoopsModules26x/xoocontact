@@ -23,7 +23,7 @@ $xoops->loadLanguage('preferences', 'xoocontact');
 
 switch ($op) {    case 'save':
     if (!$xoops->security()->check()) {
-        $xoops->redirect("preferences.php", 3, implode('<br />', $xoops->security()->getErrors()));
+        $xoops->redirect('preferences.php', 3, implode('<br />', $xoops->security()->getErrors()));
     }
 
     $xoocontact_welcome     = $system->CleanVars($_POST, 'xoocontact_welcome', '', 'string');
@@ -32,7 +32,7 @@ switch ($op) {    case 'save':
     // Write configuration file
     $object = XooContactPreferences::getInstance();
     $object->writeConfig( $object->Prepare2Save() );
-    $xoops->redirect("preferences.php", 3, _XOO_CONFIG_SAVED);
+    $xoops->redirect('preferences.php', 3, _XOO_CONFIG_SAVED);
     break;
     default:
     $form = $xoops->getModuleForm(null, 'preferences', 'xoocontact');

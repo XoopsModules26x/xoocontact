@@ -38,7 +38,7 @@ class XoocontactContactForm extends XoopsThemeForm
 
         global $xoocontact_handler;
 
-        parent::__construct('', "xoocontact_form", "index.php", 'post', true, 'horizontal');
+        parent::__construct('', 'xoocontact_form', 'index.php', 'post', true, 'horizontal');
 
         $fields = $xoocontact_handler->getDisplay();
         foreach ($fields as $k => $field) {

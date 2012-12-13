@@ -20,6 +20,6 @@
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
 return array (
-    "can_be_hidden"  => array( 4, 6, 7),
+    'can_be_hidden'  => array( 4, 6, 7),
 );
 ?>

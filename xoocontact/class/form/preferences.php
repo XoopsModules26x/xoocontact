@@ -34,7 +34,7 @@ class XoocontactPreferencesForm extends XoopsThemeForm
      * @return void
      */
     public function PreferencesForm()
-    {        extract( $this->_config );        parent::__construct('', "form_preferences", "preferences.php", 'post', true);
+    {        extract( $this->_config );        parent::__construct('', 'form_preferences', 'preferences.php', 'post', true);
         $this->setExtra('enctype="multipart/form-data"');
 
         //xoocontact_welcome
