@@ -20,11 +20,11 @@
 if (!defined("_XOO_CONFIG_SAVED")) {
     define("_XOO_CONFIG_SAVED",            "Configuration was saved");
 }
-define("_XOO_CONFIG_MAINPAGE",             "Main page");
+define("_XOO_CONFIG_MAINPAGE",             "Page d&#039;accueil");
 
-define("_XOO_CONFIG_MESSAGE",              "Message to be displayed before the form");
+define("_XOO_CONFIG_MESSAGE",              "Message qui sera affich&#233; avant que le formulaire");
 
-define("_XOO_CONFIG_EDITOR",               "Editor");
+define("_XOO_CONFIG_EDITOR",               "Editeur");
 
-define("_XOO_CONFIG_COPYMESSAGE",          "Propose a copy of this message");
+define("_XOO_CONFIG_COPYMESSAGE",          "Proposer une copie du message");
 ?>

@@ -37,20 +37,42 @@ class XoocontactPreferencesForm extends XoopsThemeForm
     {        extract( $this->_config );        parent::__construct('', 'form_preferences', 'preferences.php', 'post', true);
         $this->setExtra('enctype="multipart/form-data"');
 
+        $tabtray = new XoopsFormTabTray('', 'uniqueid');
+
+        /**
+         * Main page
+         */
+        //welcome
+        $tab1 = new XoopsFormTab(_XOO_CONFIG_MAINPAGE, 'tabid-1');
+
         //xoocontact_welcome
-        $this->addElement( new XoopsFormTextArea(_XOO_CONFIG_MESSAGE, 'xoocontact_welcome', $xoocontact_welcome, 12, 12) );
+        $tab1->addElement( new XoopsFormTextArea(_XOO_CONFIG_MESSAGE, 'xoocontact_welcome', $xoocontact_welcome, 12, 12) );
 
         //xooghost_main
-        $this->addElement( new XoopsFormRadioYN(_XOO_CONFIG_COPYMESSAGE, 'xoocontact_copymessage', $xoocontact_copymessage) );
+        $tab1->addElement( new XoopsFormRadioYN(_XOO_CONFIG_COPYMESSAGE, 'xoocontact_copymessage', $xoocontact_copymessage) );
 
-        // button
+        $tabtray->addElement($tab1);
+        $this->addElement($tabtray);
+
+        /**
+         * Buttons
+         */
         $button_tray = new XoopsFormElementTray('', '');
         $button_tray->addElement(new XoopsFormHidden('op', 'save'));
-        $button_tray->addElement(new XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
-        $button_tray->addElement(new XoopsFormButton('', 'reset', _RESET, 'reset'));
-        $cancel_send = new XoopsFormButton('', 'cancel', _CANCEL, 'button');
-        $cancel_send->setExtra("onclick='javascript:history.go(-1);'");
-        $button_tray->addElement($cancel_send);
+
+        $button = new XoopsFormButton('', 'submit', _SUBMIT, 'submit');
+        $button->setClass('btn btn-success');
+        $button_tray->addElement($button);
+
+        $button_2 = new XoopsFormButton('', 'reset', _RESET, 'reset');
+        $button_2->setClass('btn btn-warning');
+        $button_tray->addElement($button_2);
+
+        $button_3 = new XoopsFormButton('', 'cancel', _CANCEL, 'button');
+        $button_3->setExtra("onclick='javascript:history.go(-1);'");
+        $button_3->setClass('btn btn-danger');
+        $button_tray->addElement($button_3);
+
         $this->addElement($button_tray);
     }
 }
