@@ -43,13 +43,13 @@ switch ($op) {
 
     $messagesent = '';
     // Mail to webmaster
-    $WebmasterMailer = new XoocontactMail();
+    $WebmasterMailer = new Xoocontact_Mail();
     if ( $WebmasterMailer->sendToWebmaser( $contact ) ) {
         $messagesent .= sprintf(_XOO_CONTACT_MESSAGESENT, $xoopsConfig['sitename']) . '<br />' . _XOO_CONTACT_THANKYOU;
     }
     unset($WebmasterMailer);
     // Mail to visitor
-    $ContactMailer = new XoocontactMail();
+    $ContactMailer = new Xoocontact_Mail();
     if ( $toContact ) {        if ( $ContactMailer->sendToContact( $contact ) ) {            $messagesent .= '<br />' . sprintf(_XOO_CONTACT_SENTASCONFIRM, '' );
         }
     }

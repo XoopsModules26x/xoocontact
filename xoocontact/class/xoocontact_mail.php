@@ -19,7 +19,7 @@
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
-class XoocontactMail
+class Xoocontact_Mail
 {
     // constructor
     public function __construct()
@@ -37,7 +37,7 @@ class XoocontactMail
         $this->xoopsMailer->setSubject( $xoops->getConfig('sitename') . ' - ' . _XOO_CONTACT_CONTACTFORM );
     }
 
-    public function XoocontactMail()
+    public function Xoocontact_Mail()
     {
         $this->__construct();
     }

@@ -11,33 +11,22 @@
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
- * @package         xoocontact
+ * @package         Xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  * @version         $Id$
  */
 
-include dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'mainfile.php';
-include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . 'xoocontact_mail.php';
+defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
-XoopsLoad::load('xoopreferences', 'xoocontact');
-XoopsLoad::load('system', 'system');
-$system = System::getInstance();
-
-$xoops = Xoops::getInstance();
-
-if ( isset( $_POST ) ){
-    foreach ( $_POST as $k => $v )  {
-        ${$k} = $v;
+class XoocontactCorePreload extends XoopsPreloadItem
+{
+    static function eventCoreIncludeCommonEnd($args)
+    {
+        $path = dirname(dirname(__FILE__));
+        XoopsLoad::addMap(array(
+            'xoocontact' => $path . '/class/xoocontact.php',
+        ));
     }
 }
-if ( isset( $_GET ) ){
-    foreach ( $_GET as $k => $v )  {
-        ${$k} = $v;
-    }
-}
-
-$op = $system->cleanVars($_REQUEST, 'op', 'default', 'string');
-
-$xoocontact_handler = $xoops->getModuleHandler('xoocontact_contact', 'xoocontact');
 ?>

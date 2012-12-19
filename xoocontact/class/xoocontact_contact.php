@@ -19,7 +19,7 @@
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
-class Xoocontact extends XoopsObject
+class Xoocontact_contact extends XoopsObject
 {
     // constructor
     public function __construct()
@@ -40,7 +40,7 @@ class Xoocontact extends XoopsObject
         $this->initVar('dohtml', XOBJ_DTYPE_INT, 1, false);
 	}
 
-    private function Xoocontact()
+    private function Xoocontact_contact()
     {
         $this->__construct();
     }
@@ -88,11 +88,11 @@ class Xoocontact extends XoopsObject
     }
 }
 
-class XoocontactXoocontactHandler extends XoopsPersistableObjectHandler
+class XoocontactXoocontact_contactHandler extends XoopsPersistableObjectHandler
 {
-    public function __construct(&$db)
+    public function __construct($db)
     {
-        parent::__construct($db, 'xoocontact_fields', 'Xoocontact', 'xoocontact_id', 'xoocontact_description');
+        parent::__construct($db, 'xoocontact_fields', 'Xoocontact_contact', 'xoocontact_id', 'xoocontact_description');
     }
 
     public function renderAdminList()

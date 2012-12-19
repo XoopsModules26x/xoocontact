@@ -48,7 +48,7 @@ class XoocontactPreferencesForm extends XoopsThemeForm
         //xoocontact_welcome
         $tab1->addElement( new XoopsFormTextArea(_XOO_CONFIG_MESSAGE, 'xoocontact_welcome', $xoocontact_welcome, 12, 12) );
 
-        //xooghost_main
+        //xoocontact_main
         $tab1->addElement( new XoopsFormRadioYN(_XOO_CONFIG_COPYMESSAGE, 'xoocontact_copymessage', $xoocontact_copymessage) );
 
         $tabtray->addElement($tab1);
