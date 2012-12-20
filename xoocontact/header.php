@@ -40,5 +40,5 @@ $op = $system->cleanVars($_REQUEST, 'op', 'default', 'string');
 
 $contact_module = Xoocontact::getInstance();
 $contact_config = $contact_module->LoadConfig();
-$xoocontact_handler = $contact_module->getHandler('xoocontact_contact');
+$contact_handler = $contact_module->getHandler('xoocontact_contact');
 ?>

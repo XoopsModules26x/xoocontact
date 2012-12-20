@@ -38,6 +38,7 @@ $system = System::getInstance();
 
 $xoops = Xoops::getInstance();
 if ($script_name != 'about') {    $xoops->header('xoocontact_' . $script_name . '.html');} else {    $xoops->header();}
+$xoops->theme()->addStylesheet('modules/xoocontact/css/moduladmin.css');
 
 $admin_page = new XoopsModuleAdmin();
 if ($script_name != 'about' && $script_name != 'index') {
@@ -48,5 +49,5 @@ if ($script_name != 'about' && $script_name != 'index') {
 
 $contact_module = Xoocontact::getInstance();
 $contact_config = $contact_module->LoadConfig();
-$xoocontact_handler = $contact_module->getHandler('xoocontact_contact');
+$contact_handler = $contact_module->getHandler('xoocontact_contact');
 ?>

@@ -35,7 +35,6 @@ switch ($op) {    case 'save':
     $xoops->redirect('preferences.php', 3, _XOO_CONFIG_SAVED);
     break;
     default:
-    $xoops->theme()->addStylesheet('modules/xoocontact/css/preferences.css');
     $form = $contact_module->getForm($contact_config, 'preferences');
     $form->display();
 }

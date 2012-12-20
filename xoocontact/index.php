@@ -31,7 +31,7 @@ switch ($op) {
 
     $contact = array();
     $myts = MyTextSanitizer::getInstance();
-    $fields = $xoocontact_handler->getDisplay();
+    $fields = $contact_handler->getDisplay();
     foreach( $fields as $k => $field ) {        $contact[$k] = $field->getValues();        if ( $field->getVar('xoocontact_formtype') == 'mail' ) {            if ( !( $_POST['xoocontact_field' . $k] = $xoops->checkEmail( $myts->stripSlashesGPC($_POST['xoocontact_field' . $k]) ) ) ) {
                 $xoops->redirect('index.php', 3, _XOO_CONTACT_INVALIDMAIL);
             }
@@ -63,10 +63,8 @@ switch ($op) {
     $xoops->header('xoocontact_form.html');
     $xoops->theme()->addStylesheet('modules/xoocontact/css/module.css');
 
-    $xooContact_config = XooContactPreferences::getInstance()->getConfig();
-
     $xoops->tpl()->assign('moduletitle', $xoops->module->name() );
-    $xoops->tpl()->assign('welcome', $xooContact_config['xoocontact_welcome'] );
+    $xoops->tpl()->assign('welcome', $contact_config['xoocontact_welcome'] );
 
     $form = $xoops->getModuleForm(null, 'contact', 'xoocontact');
     $form->ContactForm();

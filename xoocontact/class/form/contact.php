@@ -33,21 +33,20 @@ class XoocontactContactForm extends XoopsThemeForm
      * @return void
      */
     public function ContactForm()
-    {        $xoops = Xoops::getInstance();
-        $xooContact_config = XooContactPreferences::getInstance()->getConfig();
-
-        global $xoocontact_handler;
+    {        $contact_module = Xoocontact::getInstance();
+        $contact_config = $contact_module->LoadConfig();
+        $contact_handler = $contact_module->getHandler('xoocontact_contact');
 
         parent::__construct('', 'xoocontact_form', 'index.php', 'post', true, 'horizontal');
 
-        $fields = $xoocontact_handler->getDisplay();
+        $fields = $contact_handler->getDisplay();
         foreach ($fields as $k => $field) {
             $ele = $this->getForm( $field );
             if ( is_object( $ele ) && (is_subclass_of($ele, 'XoopsFormElement') || is_subclass_of($ele, 'XoopsFormTextArea'))) {                $this->addElement( $ele, $field->getVar('xoocontact_required') );
             }
         }
 
-        if ( $xooContact_config['xoocontact_copymessage']) {
+        if ( $contact_config['xoocontact_copymessage']) {
             $this->addElement( new XoopsFormRadioYN(_XOO_CONTACT_COPYMESSAGE, 'message_copy', 0), true );
         }
 
@@ -61,9 +60,10 @@ class XoocontactContactForm extends XoopsThemeForm
 
     public function getForm( $fieldObj )
     {
-        $xoops = Xoops::getInstance();
         $system = System::getInstance();
-        $xooContact_config = XooContactPreferences::getInstance()->getConfig();
+        $contact_module = Xoocontact::getInstance();
+        $contact_config = $contact_module->LoadConfig();
+        $contact_handler = $contact_module->getHandler('xoocontact_contact');
 
         $myts = MyTextSanitizer::getInstance();
 
@@ -102,7 +102,7 @@ class XoocontactContactForm extends XoopsThemeForm
             $editor_configs['cols'] = 100;
             $editor_configs['width'] = '80%';
             $editor_configs['height'] = '500px';
-            $editor_configs['editor'] = $xooContact_config['xoocontact_editor'];
+            $editor_configs['editor'] = $contact_config['xoocontact_editor'];
             $ele = new XoopsFormEditor($title, $field, $editor_configs);
             break;
 

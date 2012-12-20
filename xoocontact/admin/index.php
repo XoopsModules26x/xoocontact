@@ -20,30 +20,30 @@
 include dirname(__FILE__) . '/header.php';
 
 switch ($op) {    case 'view':
-    $field = $xoocontact_handler->get($xoocontact_id);
+    $field = $contact_handler->get($xoocontact_id);
     $field->setView();
-    $xoocontact_handler->insert($field);
+    $contact_handler->insert($field);
     $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
     break;
 
     case 'hide':
-    $field = $xoocontact_handler->get($xoocontact_id);
+    $field = $contact_handler->get($xoocontact_id);
     $field->setHide();
-    $xoocontact_handler->insert($field);
+    $contact_handler->insert($field);
     $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
     break;
 
     case 'req':
-    $field = $xoocontact_handler->get($xoocontact_id);
+    $field = $contact_handler->get($xoocontact_id);
     $field->setRequired();
-    $xoocontact_handler->insert($field);
+    $contact_handler->insert($field);
     $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
     break;
 
     case 'notreq':
-    $field = $xoocontact_handler->get($xoocontact_id);
+    $field = $contact_handler->get($xoocontact_id);
     $field->setNotRequired();
-    $xoocontact_handler->insert($field);
+    $contact_handler->insert($field);
     $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
     break;
 
@@ -52,7 +52,7 @@ switch ($op) {    case 'view':
     $xoops->theme()->addStylesheet('modules/xoocontact/css/moduladmin.css');
 
     // Get xoocontact_fields handler & datas
-    $fields = $xoocontact_handler->renderAdminList();
+    $fields = $contact_handler->renderAdminList();
     $xoops->tpl()->assign('fields', $fields);
 
     $admin_page = new XoopsModuleAdmin();
