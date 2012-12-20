@@ -21,20 +21,13 @@ defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
 class XoocontactPreferencesForm extends XoopsThemeForm
 {
-    private $_config = array();
     /**
      * @param null $obj
      */
-    public function __construct()
-    {        $this->_config = XooContactPreferences::getInstance()->getConfig();
-    }
-
-    /**
-     * Maintenance Form
-     * @return void
-     */
-    public function PreferencesForm()
-    {        extract( $this->_config );        parent::__construct('', 'form_preferences', 'preferences.php', 'post', true);
+    public function __construct($config)
+    {
+        extract( $config );
+        parent::__construct('', 'form_preferences', 'preferences.php', 'post', true);
         $this->setExtra('enctype="multipart/form-data"');
 
         $tabtray = new XoopsFormTabTray('', 'uniqueid');

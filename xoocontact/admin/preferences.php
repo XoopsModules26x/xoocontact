@@ -19,7 +19,7 @@
 
 include dirname(__FILE__) . '/header.php';
 
-$xoops->loadLanguage('preferences', 'xoocontact');
+$contact_module->loadLanguage('preferences');
 
 switch ($op) {    case 'save':
     if (!$xoops->security()->check()) {
@@ -36,8 +36,7 @@ switch ($op) {    case 'save':
     break;
     default:
     $xoops->theme()->addStylesheet('modules/xoocontact/css/preferences.css');
-    $form = $xoops->getModuleForm(null, 'preferences', 'xoocontact');
-    $form->PreferencesForm();
+    $form = $contact_module->getForm($contact_config, 'preferences');
     $form->display();
 }
 include dirname(__FILE__) . '/footer.php';

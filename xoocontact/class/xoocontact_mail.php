@@ -65,7 +65,7 @@ class Xoocontact_Mail
         } else {
             $this->xoopsMailer->setTemplateDir( $this->defaultPath );
         }
-        $this->xoopsMailer->setTemplate( $template );
+        $this->xoopsMailer->setTemplate($template);
     }
 
     private function setVariables( $contact )

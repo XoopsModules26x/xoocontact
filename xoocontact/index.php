@@ -48,6 +48,7 @@ switch ($op) {
         $messagesent .= sprintf(_XOO_CONTACT_MESSAGESENT, $xoopsConfig['sitename']) . '<br />' . _XOO_CONTACT_THANKYOU;
     }
     unset($WebmasterMailer);
+
     // Mail to visitor
     $ContactMailer = new Xoocontact_Mail();
     if ( $toContact ) {        if ( $ContactMailer->sendToContact( $contact ) ) {            $messagesent .= '<br />' . sprintf(_XOO_CONTACT_SENTASCONFIRM, '' );

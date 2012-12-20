@@ -19,9 +19,6 @@
 
 include dirname(__FILE__) . '/header.php';
 
-// Get xoocontact_fields handler & datas
-$xoocontact_handler = $xoops->getModuleHandler('xoocontact_contact', 'xoocontact');
-
 switch ($op) {    case 'view':
     $field = $xoocontact_handler->get($xoocontact_id);
     $field->setView();
@@ -55,7 +52,6 @@ switch ($op) {    case 'view':
     $xoops->theme()->addStylesheet('modules/xoocontact/css/moduladmin.css');
 
     // Get xoocontact_fields handler & datas
-    $xoocontact_handler = $xoops->getModuleHandler('xoocontact_contact', 'xoocontact');
     $fields = $xoocontact_handler->renderAdminList();
     $xoops->tpl()->assign('fields', $fields);
 

@@ -20,7 +20,6 @@
 include dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'mainfile.php';
 include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . 'xoocontact_mail.php';
 
-XoopsLoad::load('xoopreferences', 'xoocontact');
 XoopsLoad::load('system', 'system');
 $system = System::getInstance();
 
@@ -39,5 +38,7 @@ if ( isset( $_GET ) ){
 
 $op = $system->cleanVars($_REQUEST, 'op', 'default', 'string');
 
-$xoocontact_handler = $xoops->getModuleHandler('xoocontact_contact', 'xoocontact');
+$contact_module = Xoocontact::getInstance();
+$contact_config = $contact_module->LoadConfig();
+$xoocontact_handler = $contact_module->getHandler('xoocontact_contact');
 ?>

@@ -33,7 +33,6 @@ if ( isset( $_GET ) ){
 
 $script_name = basename($_SERVER['SCRIPT_NAME'], '.php');
 
-XoopsLoad::load('xoopreferences', 'xoocontact');
 XoopsLoad::load('system', 'system');
 $system = System::getInstance();
 
@@ -46,4 +45,8 @@ if ($script_name != 'about' && $script_name != 'index') {
 } elseif ($script_name != 'index') {
     $admin_page->displayNavigation( basename($_SERVER['SCRIPT_NAME']) );
 }
+
+$contact_module = Xoocontact::getInstance();
+$contact_config = $contact_module->LoadConfig();
+$xoocontact_handler = $contact_module->getHandler('xoocontact_contact');
 ?>
