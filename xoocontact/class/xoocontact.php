@@ -29,12 +29,18 @@ class Xoocontact extends Xoops_Module_Abstract
     public function init()
     {
         $this->setDirname('xoocontact');
-    }
+        @$this->loadLanguage('preferences');
+   }
 
     public function LoadConfig()
     {
         XoopsLoad::load('xoopreferences', $this->_dirname);
         return XooContactPreferences::getInstance()->getConfig();
+    }
+
+    public function ContactHandler()
+    {
+        return $this->getHandler('xoocontact_contact');
     }
 }
 ?>

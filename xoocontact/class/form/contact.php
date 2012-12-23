@@ -35,7 +35,7 @@ class XoocontactContactForm extends XoopsThemeForm
     public function ContactForm()
     {        $contact_module = Xoocontact::getInstance();
         $contact_config = $contact_module->LoadConfig();
-        $contact_handler = $contact_module->getHandler('xoocontact_contact');
+        $contact_handler = $contact_module->ContactHandler();
 
         parent::__construct('', 'xoocontact_form', 'index.php', 'post', true, 'horizontal');
 
@@ -63,7 +63,7 @@ class XoocontactContactForm extends XoopsThemeForm
         $system = System::getInstance();
         $contact_module = Xoocontact::getInstance();
         $contact_config = $contact_module->LoadConfig();
-        $contact_handler = $contact_module->getHandler('xoocontact_contact');
+        $contact_handler = $contact_module->ContactHandler();
 
         $myts = MyTextSanitizer::getInstance();
 

@@ -49,5 +49,5 @@ if ($script_name != 'about' && $script_name != 'index') {
 
 $contact_module = Xoocontact::getInstance();
 $contact_config = $contact_module->LoadConfig();
-$contact_handler = $contact_module->getHandler('xoocontact_contact');
+$contact_handler = $contact_module->ContactHandler();
 ?>
