@@ -17,13 +17,12 @@
  * @version         $Id$
  */
 
-define("_XOO_CONTACT_COPYMESSAGE",             "Do you require a copy of your email ?");
+define('_XOO_CONTACT_COPYMESSAGE', 'Do you require a copy of your email ?');
 
-define("_XOO_CONTACT_SUBMIT",                  "Send");
+define('_XOO_CONTACT_SUBMIT', 'Send');
 
-define("_XOO_CONTACT_CONTACTFORM",            "Contact us Form");
-define("_XOO_CONTACT_MESSAGESENT",            "Message to %s Send");
-define("_XOO_CONTACT_THANKYOU",               "Thank you for your interest in our site!");
+define('_XOO_CONTACT_CONTACTFORM', 'Contact us Form');
+define('_XOO_CONTACT_MESSAGESENT', 'Message to %s Send');
+define('_XOO_CONTACT_THANKYOU', 'Thank you for your interest in our site!');
 
-define("_XOO_CONTACT_SENTASCONFIRM",          "Your comments have been sent to: %s as a confirmation email.");
-?>
+define('_XOO_CONTACT_SENTASCONFIRM', 'Your comments have been sent to: %s as a confirmation email.');

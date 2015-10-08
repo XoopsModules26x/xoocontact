@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Xoocontact module
  *
@@ -14,17 +15,36 @@
  * @package         Xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
- * @version         $Id$
+ * @version         $Id: xoocontact.php 1393 2012-12-30 07:34:57Z DuGris $
  */
-
-defined('XOOPS_ROOT_PATH') || exit('Restricted access');
-
-include_once XOOPS_ROOT_PATH . '/modules/xoocontact/install/install.php';
-
-/**
- * @return bool
- */
-function xoops_module_update_xoocontact()
+class XooContact extends Xoops\Module\Helper\HelperAbstract
 {
-    return xoops_module_install_xoocontact();
+    /**
+     * Init the module
+     *
+     * @return null|void
+     */
+    public function init()
+    {
+        $this->setDirname(basename(dirname(__DIR__)));
+        $this->loadLanguage('preferences');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function LoadConfig()
+    {
+        XoopsLoad::load('xoopreferences', $this->_dirname);
+
+        return XooContactPreferences::getInstance()->getConfig();
+    }
+
+    /**
+     * @return \Xoops\Module\Helper\
+     */
+    public function ContactHandler()
+    {
+        return $this->getHandler('xoocontact_contact');
+    }
 }

@@ -17,51 +17,52 @@
  * @version         $Id$
  */
 
-include dirname(__FILE__) . '/header.php';
+include __DIR__ . '/header.php';
 
-switch ($op) {    case 'view':
-    $field = $contact_handler->get($xoocontact_id);
-    $field->setView();
-    $contact_handler->insert($field);
-    $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
-    break;
+switch ($op) {
+    case 'view':
+        $field = $contact_handler->get($xoocontact_id);
+        $field->setView();
+        $contact_handler->insert($field);
+        $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
+        break;
 
     case 'hide':
-    $field = $contact_handler->get($xoocontact_id);
-    $field->setHide();
-    $contact_handler->insert($field);
-    $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
-    break;
+        $field = $contact_handler->get($xoocontact_id);
+        $field->setHide();
+        $contact_handler->insert($field);
+        $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
+        break;
 
     case 'req':
-    $field = $contact_handler->get($xoocontact_id);
-    $field->setRequired();
-    $contact_handler->insert($field);
-    $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
-    break;
+        $field = $contact_handler->get($xoocontact_id);
+        $field->setRequired();
+        $contact_handler->insert($field);
+        $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
+        break;
 
     case 'notreq':
-    $field = $contact_handler->get($xoocontact_id);
-    $field->setNotRequired();
-    $contact_handler->insert($field);
-    $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
-    break;
+        $field = $contact_handler->get($xoocontact_id);
+        $field->setNotRequired();
+        $contact_handler->insert($field);
+        $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
+        break;
 
-    default:    // heaser
-    $xoops->header();
-    $xoops->theme()->addStylesheet('modules/xoocontact/css/moduladmin.css');
+    default:
+        // heaser
+        $xoops->header();
+        $xoops->theme()->addStylesheet('modules/xoocontact/assets/css/moduladmin.css');
 
-    // Get xoocontact_fields handler & datas
-    $fields = $contact_handler->renderAdminList();
-    $xoops->tpl()->assign('fields', $fields);
+        // Get xoocontact_fields handler & datas
+        $fields = $contact_handler->renderAdminList();
+        $xoops->tpl()->assign('fields', $fields);
 
-    $admin_page = new XoopsModuleAdmin();
+        $admin_page = new \Xoops\Module\Admin();
 
-    $admin_page->addInfoBox(_AM_XOO_CONTACT_MANAGER);
-    $admin_page->addInfoBoxLine( $xoops->tpl()->fetch('admin:xoocontact|xoocontact_fields_manager.html') );
+        $admin_page->addInfoBox(_AM_XOO_CONTACT_MANAGER);
+        $admin_page->addInfoBoxLine($xoops->tpl()->fetch('admin:xoocontact/xoocontact_fields_manager.tpl'));
 
-    $admin_page->displayIndex();
-    break;
+        $admin_page->displayIndex();
+        break;
 }
-include dirname(__FILE__) . '/footer.php';
-?>
+include __DIR__ . '/footer.php';

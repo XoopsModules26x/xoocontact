@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Xoocontact module
  *
@@ -16,53 +17,59 @@
  * @author          Laurent JEN (Aka DuGris)
  * @version         $Id$
  */
-
-defined('XOOPS_ROOT_PATH') or die('Restricted access');
-
-class XoocontactContactForm extends XoopsThemeForm
+class XoocontactContactForm extends Xoops\Form\ThemeForm
 
 {
     /**
-     * @param null $obj
+     * @internal param null $obj
      */
     public function __construct()
-    {    }
+    {
+    }
 
     /**
      * Maintenance Form
+     *
      * @return void
      */
     public function ContactForm()
-    {        $contact_module = Xoocontact::getInstance();
-        $contact_config = $contact_module->LoadConfig();
+    {
+        $contact_module  = Xoocontact::getInstance();
+        $contact_config  = $contact_module->LoadConfig();
         $contact_handler = $contact_module->ContactHandler();
 
         parent::__construct('', 'xoocontact_form', 'index.php', 'post', true, 'horizontal');
 
         $fields = $contact_handler->getDisplay();
         foreach ($fields as $k => $field) {
-            $ele = $this->getForm( $field );
-            if ( is_object( $ele ) && (is_subclass_of($ele, 'XoopsFormElement') || is_subclass_of($ele, 'XoopsFormTextArea'))) {                $this->addElement( $ele, $field->getVar('xoocontact_required') );
+            $ele = $this->getForm($field);
+            if (is_object($ele) && (is_subclass_of($ele, 'Xoops\Form\Element') || is_subclass_of($ele, 'Xoops\Form\TextArea'))) {
+                $this->addElement($ele, $field->getVar('xoocontact_required'));
             }
         }
 
-        if ( $contact_config['xoocontact_copymessage']) {
-            $this->addElement( new XoopsFormRadioYN(_XOO_CONTACT_COPYMESSAGE, 'message_copy', 0), true );
+        if ($contact_config['xoocontact_copymessage']) {
+            $this->addElement(new Xoops\Form\RadioYesNo(_XOO_CONTACT_COPYMESSAGE, 'message_copy', 0), true);
         }
 
-        $this->addElement( new XoopsFormCaptcha(null,null,false), true );
+        $this->addElement(new Xoops\Form\Captcha(null, null, false), true);
 
-        $button_tray = new XoopsFormElementTray('&nbsp;', '&nbsp;');
-        $button_tray->addElement(new XoopsFormHidden('op', 'submit'));
-        $button_tray->addElement(new XoopsFormButton('', '', _XOO_CONTACT_SUBMIT, 'submit'));
+        $button_tray = new Xoops\Form\ElementTray('&nbsp;', '&nbsp;');
+        $button_tray->addElement(new Xoops\Form\Hidden('op', 'submit'));
+        $button_tray->addElement(new Xoops\Form\Button('', '', _XOO_CONTACT_SUBMIT, 'submit'));
         $this->addElement($button_tray);
     }
 
-    public function getForm( $fieldObj )
+    /**
+     * @param $fieldObj
+     *
+     * @return string|\Xoops\Form\DhtmlTextArea|\Xoops\Form\Editor|\Xoops\Form\Mail|\Xoops\Form\Text|\Xoops\Form\TextArea|\Xoops\Form\Url
+     */
+    public function getForm($fieldObj)
     {
-        $system = System::getInstance();
-        $contact_module = Xoocontact::getInstance();
-        $contact_config = $contact_module->LoadConfig();
+        $system          = System::getInstance();
+        $contact_module  = Xoocontact::getInstance();
+        $contact_config  = $contact_module->LoadConfig();
         $contact_handler = $contact_module->ContactHandler();
 
         $myts = MyTextSanitizer::getInstance();
@@ -75,68 +82,68 @@ class XoocontactContactForm extends XoopsThemeForm
 
         switch ($fieldObj->getVar('xoocontact_formtype')) {
             case 'textbox':
-            $ele = new XoopsFormText($title, $field, $fieldObj->getVar('xoocontact_min_width'), $fieldObj->getVar('xoocontact_max_width'), $value);
-            break;
+                $ele = new Xoops\Form\Text($title, $field, $fieldObj->getVar('xoocontact_min_width'), $fieldObj->getVar('xoocontact_max_width'), $value);
+                break;
 
             case 'mail':
-            $ele = new XoopsFormMail($title, $field, $fieldObj->getVar('xoocontact_min_width'), $fieldObj->getVar('xoocontact_max_width'), $value);
-            break;
+                $ele = new Xoops\Form\Mail($title, $field, $fieldObj->getVar('xoocontact_min_width'), $fieldObj->getVar('xoocontact_max_width'), $value);
+                break;
 
             case 'url':
-            $ele = new XoopsFormUrl($title, $field, $fieldObj->getVar('xoocontact_min_width'), $fieldObj->getVar('xoocontact_max_width'), $value);
-            break;
+                $ele = new Xoops\Form\Url($title, $field, $fieldObj->getVar('xoocontact_min_width'), $fieldObj->getVar('xoocontact_max_width'), $value);
+                break;
 
             case 'textarea':
-            $ele = new XoopsFormTextArea($title, $field, $value, $fieldObj->getVar('xoocontact_min_width'), $fieldObj->getVar('xoocontact_max_width'));
-            break;
+                $ele = new Xoops\Form\TextArea($title, $field, $value, $fieldObj->getVar('xoocontact_min_width'), $fieldObj->getVar('xoocontact_max_width'));
+                break;
 
             case 'dhtmltextarea':
-            $ele = new XoopsFormDhtmlTextArea($title, $field, $value, $fieldObj->getVar('xoocontact_min_width'), $fieldObj->getVar('xoocontact_max_width'));
-            break;
+                $ele = new Xoops\Form\DhtmlTextArea($title, $field, $value, $fieldObj->getVar('xoocontact_min_width'), $fieldObj->getVar('xoocontact_max_width'));
+                break;
 
             case 'editor':
-            $editor_configs=array();
-            $editor_configs['name'] = $field;
-            $editor_configs['value'] = $value;
-            $editor_configs['rows'] = 3;
-            $editor_configs['cols'] = 100;
-            $editor_configs['width'] = '80%';
-            $editor_configs['height'] = '500px';
-            $editor_configs['editor'] = $contact_config['xoocontact_editor'];
-            $ele = new XoopsFormEditor($title, $field, $editor_configs);
-            break;
+                $editor_configs           = array();
+                $editor_configs['name']   = $field;
+                $editor_configs['value']  = $value;
+                $editor_configs['rows']   = 3;
+                $editor_configs['cols']   = 100;
+                $editor_configs['width']  = '80%';
+                $editor_configs['height'] = '500px';
+                $editor_configs['editor'] = $contact_config['xoocontact_editor'];
+                $ele                      = new Xoops\Form\Editor($title, $field, $editor_configs);
+                break;
 
             case 'select':
-            $options = unserialize( $fieldObj->getVar('xoocontact_value','n') );
-            $ele = new XoopsFormSelect($title, $field, $value);
-            $ele->addOptionArray($options);
-            break;
+                $options = unserialize($fieldObj->getVar('xoocontact_value', 'n'));
+                $ele     = new Xoops\Form\Select($title, $field, $value);
+                $ele->addOptionArray($options);
+                break;
 
             case 'select_multi':
-            $options = unserialize( $fieldObj->getVar('xoocontact_value','n') );
-            $ele = new XoopsFormSelect($title, $field, $value, count($options), true);
-            $ele->addOptionArray($options);
-            break;
+                $options = unserialize($fieldObj->getVar('xoocontact_value', 'n'));
+                $ele     = new Xoops\Form\Select($title, $field, $value, count($options), true);
+                $ele->addOptionArray($options);
+                break;
 
             case 'radio':
-            $ele = new XoopsFormRadio($title, $field, $value);
-            $options = unserialize( $fieldObj->getVar('xoocontact_value','n') );
-            $ele->addOptionArray($options);
-            break;
+                $ele     = new Xoops\Form\Radio($title, $field, $value);
+                $options = unserialize($fieldObj->getVar('xoocontact_value', 'n'));
+                $ele->addOptionArray($options);
+                break;
 
             case 'yesno':
-            $ele = new XoopsFormRadioYN($title, $field, $value, _YES, _NO);
-            break;
+                $ele = new Xoops\Form\RadioYesNo($title, $field, $value, _YES, _NO);
+                break;
 
             case 'hidden':
-            $ele = new XoopsFormHidden( $field, $myts->htmlspecialchars( $fieldObj->getVar('xoocontact_value','e') ) );
-            break;
+                $ele = new Xoops\Form\Hidden($field, $myts->htmlspecialchars($fieldObj->getVar('xoocontact_value', 'e')));
+                break;
 
             case 'line_break':
-            $fieldObj->insertBreak('<center>' . $title . '</center>','');
-            break;
+                $fieldObj->insertBreak('<div style=\'text-align: center;\'>' . $title . '</div>', '');
+                break;
         }
+
         return $ele;
     }
 }
-?>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Xoocontact module
  *
@@ -16,33 +17,32 @@
  * @author          Laurent JEN (Aka DuGris)
  * @version         $Id$
  */
-
-defined('XOOPS_ROOT_PATH') or die('Restricted access');
-
-class XoocontactPreferencesForm extends XoopsThemeForm
+class XoocontactPreferencesForm extends Xoops\Form\ThemeForm
 {
     /**
-     * @param null $obj
+     * @param string $config
+     *
+     * @internal param null $obj
      */
     public function __construct($config)
     {
-        extract( $config );
+        extract($config);
         parent::__construct('', 'form_preferences', 'preferences.php', 'post', true);
         $this->setExtra('enctype="multipart/form-data"');
 
-        $tabtray = new XoopsFormTabTray('', 'uniqueid');
+        $tabtray = new Xoops\Form\TabTray('', 'uniqueid');
 
         /**
          * Main page
          */
         //welcome
-        $tab1 = new XoopsFormTab(_XOO_CONFIG_MAINPAGE, 'tabid-1');
+        $tab1 = new Xoops\Form\Tab(_XOO_CONFIG_MAINPAGE, 'tabid-1');
 
         //xoocontact_welcome
-        $tab1->addElement( new XoopsFormTextArea(_XOO_CONFIG_MESSAGE, 'xoocontact_welcome', $xoocontact_welcome, 12, 12) );
+        $tab1->addElement(new Xoops\Form\TextArea(_XOO_CONFIG_MESSAGE, 'xoocontact_welcome', $xoocontact_welcome, 12, 12));
 
         //xoocontact_main
-        $tab1->addElement( new XoopsFormRadioYN(_XOO_CONFIG_COPYMESSAGE, 'xoocontact_copymessage', $xoocontact_copymessage) );
+        $tab1->addElement(new Xoops\Form\RadioYesNo(_XOO_CONFIG_COPYMESSAGE, 'xoocontact_copymessage', $xoocontact_copymessage));
 
         $tabtray->addElement($tab1);
         $this->addElement($tabtray);
@@ -50,18 +50,18 @@ class XoocontactPreferencesForm extends XoopsThemeForm
         /**
          * Buttons
          */
-        $button_tray = new XoopsFormElementTray('', '');
-        $button_tray->addElement(new XoopsFormHidden('op', 'save'));
+        $button_tray = new Xoops\Form\ElementTray('', '');
+        $button_tray->addElement(new Xoops\Form\Hidden('op', 'save'));
 
-        $button = new XoopsFormButton('', 'submit', _SUBMIT, 'submit');
+        $button = new Xoops\Form\Button('', 'submit', XoopsLocale::A_SUBMIT, 'submit');
         $button->setClass('btn btn-success');
         $button_tray->addElement($button);
 
-        $button_2 = new XoopsFormButton('', 'reset', _RESET, 'reset');
+        $button_2 = new Xoops\Form\Button('', 'reset', XoopsLocale::A_RESET, 'reset');
         $button_2->setClass('btn btn-warning');
         $button_tray->addElement($button_2);
 
-        $button_3 = new XoopsFormButton('', 'cancel', _CANCEL, 'button');
+        $button_3 = new Xoops\Form\Button('', 'cancel', XoopsLocale::A_CANCEL, 'button');
         $button_3->setExtra("onclick='javascript:history.go(-1);'");
         $button_3->setClass('btn btn-danger');
         $button_tray->addElement($button_3);
@@ -69,4 +69,3 @@ class XoocontactPreferencesForm extends XoopsThemeForm
         $this->addElement($button_tray);
     }
 }
-?>

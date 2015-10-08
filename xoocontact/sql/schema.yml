@@ -1,0 +1,158 @@
+tables:
+    xoocontact_fields:
+        options: {  }
+        columns:
+            xoocontact_id:
+                name: xoocontact_id
+                type: integer
+                default: null
+                notnull: true
+                length: null
+                precision: 10
+                scale: 0
+                fixed: false
+                unsigned: false
+                autoincrement: true
+                columnDefinition: null
+                comment: null
+            xoocontact_description:
+                name: xoocontact_description
+                type: text
+                default: null
+                notnull: true
+                length: 65535
+                precision: 10
+                scale: 0
+                fixed: false
+                unsigned: false
+                autoincrement: false
+                columnDefinition: null
+                comment: null
+                collation: utf8_general_ci
+            xoocontact_value:
+                name: xoocontact_value
+                type: text
+                default: null
+                notnull: true
+                length: 65535
+                precision: 10
+                scale: 0
+                fixed: false
+                unsigned: false
+                autoincrement: false
+                columnDefinition: null
+                comment: null
+                collation: utf8_general_ci
+            xoocontact_formtype:
+                name: xoocontact_formtype
+                type: string
+                default: null
+                notnull: true
+                length: 15
+                precision: 10
+                scale: 0
+                fixed: false
+                unsigned: false
+                autoincrement: false
+                columnDefinition: null
+                comment: null
+                collation: utf8_general_ci
+            xoocontact_valuetype:
+                name: xoocontact_valuetype
+                type: string
+                default: null
+                notnull: true
+                length: 10
+                precision: 10
+                scale: 0
+                fixed: false
+                unsigned: false
+                autoincrement: false
+                columnDefinition: null
+                comment: null
+                collation: utf8_general_ci
+            xoocontact_default:
+                name: xoocontact_default
+                type: string
+                default: null
+                notnull: true
+                length: 255
+                precision: 10
+                scale: 0
+                fixed: false
+                unsigned: false
+                autoincrement: false
+                columnDefinition: null
+                comment: null
+                collation: utf8_general_ci
+            xoocontact_min_width:
+                name: xoocontact_min_width
+                type: smallint
+                default: null
+                notnull: true
+                length: null
+                precision: 10
+                scale: 0
+                fixed: false
+                unsigned: false
+                autoincrement: false
+                columnDefinition: null
+                comment: null
+            xoocontact_max_width:
+                name: xoocontact_max_width
+                type: smallint
+                default: null
+                notnull: true
+                length: null
+                precision: 10
+                scale: 0
+                fixed: false
+                unsigned: false
+                autoincrement: false
+                columnDefinition: null
+                comment: null
+            xoocontact_required:
+                name: xoocontact_required
+                type: boolean
+                default: '1'
+                notnull: true
+                length: null
+                precision: 10
+                scale: 0
+                fixed: false
+                unsigned: false
+                autoincrement: false
+                columnDefinition: null
+                comment: null
+            xoocontact_display:
+                name: xoocontact_display
+                type: boolean
+                default: '1'
+                notnull: true
+                length: null
+                precision: 10
+                scale: 0
+                fixed: false
+                unsigned: false
+                autoincrement: false
+                columnDefinition: null
+                comment: null
+            xoocontact_order:
+                name: xoocontact_order
+                type: boolean
+                default: null
+                notnull: true
+                length: null
+                precision: 10
+                scale: 0
+                fixed: false
+                unsigned: false
+                autoincrement: false
+                columnDefinition: null
+                comment: null
+        indexes:
+            PRIMARY:
+                name: PRIMARY
+                columns: [xoocontact_id]
+                unique: true
+                primary: true

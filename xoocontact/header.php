@@ -17,28 +17,27 @@
  * @version         $Id$
  */
 
-include dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'mainfile.php';
-include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . 'xoocontact_mail.php';
+include dirname(dirname(__DIR__)) .  '/mainfile.php';
+include __DIR__ .  '/class' .  '/xoocontact_mail.php';
 
 XoopsLoad::load('system', 'system');
 $system = System::getInstance();
 
 $xoops = Xoops::getInstance();
 
-if ( isset( $_POST ) ){
-    foreach ( $_POST as $k => $v )  {
+if (isset($_POST)) {
+    foreach ($_POST as $k => $v) {
         ${$k} = $v;
     }
 }
-if ( isset( $_GET ) ){
-    foreach ( $_GET as $k => $v )  {
+if (isset($_GET)) {
+    foreach ($_GET as $k => $v) {
         ${$k} = $v;
     }
 }
 
 $op = $system->cleanVars($_REQUEST, 'op', 'default', 'string');
 
-$contact_module = Xoocontact::getInstance();
-$contact_config = $contact_module->LoadConfig();
+$contact_module  = Xoocontact::getInstance();
+$contact_config  = $contact_module->LoadConfig();
 $contact_handler = $contact_module->ContactHandler();
-?>
