@@ -5,7 +5,7 @@
 <{/if}>
 
 <{if $welcome}>
-    <div class="xoocontactMsg">
+    <div class='xoocontactMsg'>
         <{$welcome}>
     </div>
 <{/if}>

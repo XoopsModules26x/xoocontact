@@ -49,7 +49,7 @@ switch ($op) {
         break;
 
     default:
-        // heaser
+        // teaser
         $xoops->header();
         $xoops->theme()->addStylesheet('modules/xoocontact/assets/css/moduladmin.css');
 
@@ -58,9 +58,10 @@ switch ($op) {
         $xoops->tpl()->assign('fields', $fields);
 
         $admin_page = new \Xoops\Module\Admin();
+        $admin_page->displayNavigation('index.php');
 
         $admin_page->addInfoBox(_AM_XOO_CONTACT_MANAGER);
-        $admin_page->addInfoBoxLine($xoops->tpl()->fetch('admin:xoocontact/xoocontact_fields_manager.tpl'));
+        $admin_page->addInfoBoxLine($xoops->tpl()->fetch('admin:xoocontact/xoocontact_admin_fields_manager.tpl'));
 
         $admin_page->displayIndex();
         break;

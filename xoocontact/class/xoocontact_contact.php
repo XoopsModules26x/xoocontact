@@ -17,6 +17,7 @@
  * @version         $Id$
  */
 
+use Xoops\Core\Database\Connection;
 use Xoops\Core\Kernel\XoopsObject;
 use Xoops\Core\Kernel\XoopsPersistableObjectHandler;
 
@@ -47,10 +48,10 @@ class Xoocontact_contact extends XoopsObject
         $this->initVar('dohtml', XOBJ_DTYPE_INT, 1, false);
     }
 
-    private function Xoocontact_contact()
-    {
-        $this->__construct();
-    }
+//    private function Xoocontact_contact()
+//    {
+//        $this->__construct();
+//    }
 
     /**
      * @return bool
@@ -130,7 +131,7 @@ class Xoocontact_contact extends XoopsObject
 class XoocontactXoocontact_contactHandler extends XoopsPersistableObjectHandler
 {
     /**
-     * @param null|\Xoops\Core\Database\Connection $db
+     * @param null|Connection $db
      */
     public function __construct(Connection $db = null)
     {

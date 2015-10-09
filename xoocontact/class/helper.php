@@ -15,7 +15,7 @@
  * @package         Xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
- * @version         $Id: xoocontact.php 1393 2012-12-30 07:34:57Z DuGris $
+ * @version         $Id:
  */
 class XooContact extends Xoops\Module\Helper\HelperAbstract
 {

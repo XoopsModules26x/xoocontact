@@ -32,7 +32,7 @@ class XoocontactPreload extends PreloadItem
         $path = dirname(__DIR__);
         XoopsLoad::addMap(
             array(
-                'xoocontact' => $path . '/class/helper.php',
+                'xoocontact' => $path . '/class/helper.php'
             )
         );
     }

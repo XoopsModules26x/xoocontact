@@ -32,23 +32,24 @@
             <td class="txtcenter">
                 <{if ( $field.can_be_hidden )}>
                     <{if ( $field.xoocontact_required )}>
-                        <a href="index.php?op=notreq&amp;xoocontact_id=<{$field.xoocontact_id}>" title="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"><img src="<{xoImgUrl media/xoops/images/icons/16/on.png}>" alt="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"></a>
+                        <a href="index.php?op=notreq&amp;xoocontact_id=<{$field.xoocontact_id}>"
+                           title="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"><img src="<{xoImgUrl 'media/xoops/images/icons/16/on.png'}>" alt="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"></a>
                     <{else}>
-                        <a href="index.php?op=req&amp;xoocontact_id=<{$field.xoocontact_id}>" title="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"><img src="<{xoImgUrl media/xoops/images/icons/16/off.png}>" alt="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"></a>
+                        <a href="index.php?op=req&amp;xoocontact_id=<{$field.xoocontact_id}>" title="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"><img src="<{xoImgUrl 'media/xoops/images/icons/16/off.png'}>" alt="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"></a>
                     <{/if}>
                 <{else}>
-                    <img src="<{xoImgUrl media/xoops/images/icons/16/on.png}>" alt="On">
+                    <img src="<{xoImgUrl 'media/xoops/images/icons/16/on.png'}>" alt="On">
                 <{/if}>
 
             <td class="txtcenter">
                 <{if ( $field.can_be_hidden )}>
                     <{if ( $field.xoocontact_display )}>
-                        <a href="index.php?op=hide&amp;xoocontact_id=<{$field.xoocontact_id}>" title="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"><img src="<{xoImgUrl media/xoops/images/icons/16/on.png}>" alt="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"></a>
+                        <a href="index.php?op=hide&amp;xoocontact_id=<{$field.xoocontact_id}>" title="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"><img src="<{xoImgUrl 'media/xoops/images/icons/16/on.png'}>" alt="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"></a>
                     <{else}>
-                        <a href="index.php?op=view&amp;xoocontact_id=<{$field.xoocontact_id}>" title="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"><img src="<{xoImgUrl media/xoops/images/icons/16/off.png}>" alt="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"></a>
+                        <a href="index.php?op=view&amp;xoocontact_id=<{$field.xoocontact_id}>" title="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"><img src="<{xoImgUrl 'media/xoops/images/icons/16/off.png'}>" alt="<{$smarty.const._AM_XOO_CONTACT_VIEW_HIDE}>"></a>
                     <{/if}>
                 <{else}>
-                    <img src="<{xoImgUrl media/xoops/images/icons/16/on.png}>" alt="On">
+                    <img src="<{xoImgUrl 'media/xoops/images/icons/16/on.png'}>" alt="On">
                 <{/if}>
             </td>
         </tr>

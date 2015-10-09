@@ -17,13 +17,13 @@
  * @version         $Id$
  */
 
-if (!defined("_XOO_CONFIG_SAVED")) {
-    define('_XOO_CONFIG_SAVED', "Configuration was saved");
+if (!defined('_XOO_CONFIG_SAVED')) {
+    define('_XOO_CONFIG_SAVED', 'Configuration was saved');
 }
-define('_XOO_CONFIG_MAINPAGE', "Page d&#039;accueil");
+define('_XOO_CONFIG_MAINPAGE', 'Page d&#039;accueil');
 
-define('_XOO_CONFIG_MESSAGE', "Message qui sera affich&#233; avant que le formulaire");
+define('_XOO_CONFIG_MESSAGE', 'Message qui sera affich&#233; avant que le formulaire');
 
-define('_XOO_CONFIG_EDITOR', "Editeur");
+define('_XOO_CONFIG_EDITOR', 'Editeur');
 
-define('_XOO_CONFIG_COPYMESSAGE', "Proposer une copie du message");
+define('_XOO_CONFIG_COPYMESSAGE', 'Proposer une copie du message');

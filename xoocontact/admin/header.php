@@ -38,7 +38,7 @@ $system = System::getInstance();
 
 $xoops = Xoops::getInstance();
 if ($script_name != 'about') {
-    $xoops->header('xoocontact_' . $script_name . '.tpl');
+    $xoops->header('xoocontact_admin_' . $script_name . '.tpl');
 } else {
     $xoops->header();
 }

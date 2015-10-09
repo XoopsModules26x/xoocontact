@@ -31,7 +31,7 @@ class Xoocontact_Mail
     public function __construct()
     {
         $xoops             = Xoops::getInstance();
-        $this->custumPath  = XOOPS_ROOT_PATH . '/themes/' . $xoops->getConfig('theme_set') . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
+        $this->customPath  = XOOPS_ROOT_PATH . '/themes/' . $xoops->getConfig('theme_set') . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
         $this->defaultPath = XOOPS_ROOT_PATH . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
 
         $this->webmasterMail = $xoops->getConfig('adminmail');
@@ -86,8 +86,8 @@ class Xoocontact_Mail
      */
     private function setTemplate($template)
     {
-        if (file_exists($this->custumPath . '/' . $template)) {
-            $this->xoopsMailer->setTemplateDir($this->custumPath);
+        if (file_exists($this->customPath . '/' . $template)) {
+            $this->xoopsMailer->setTemplateDir($this->customPath);
         } else {
             $this->xoopsMailer->setTemplateDir($this->defaultPath);
         }

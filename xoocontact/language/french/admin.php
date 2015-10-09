@@ -17,15 +17,15 @@
  * @version         $Id$
  */
 
-define('_AM_XOO_CONTACT_MANAGER', "Gestionnaire de formulaire");
+define('_AM_XOO_CONTACT_MANAGER', 'Gestionnaire de formulaire');
 
-define('_AM_XOO_CONTACT_FIELD_NAME', "Nom des champs");
-define('_AM_XOO_CONTACT_FIELD_VALUE', "Valeur des champs");
-define('_AM_XOO_CONTACT_DESCRIPTION', "Champs");
-define('_AM_XOO_CONTACT_VALUE', "Valeur");
-define('_AM_XOO_CONTACT_REQUIRED', "Requis");
-define('_AM_XOO_CONTACT_DISPLAY', "Afficher");
+define('_AM_XOO_CONTACT_FIELD_NAME', 'Nom des champs');
+define('_AM_XOO_CONTACT_FIELD_VALUE', 'Valeur des champs');
+define('_AM_XOO_CONTACT_DESCRIPTION', 'Champs');
+define('_AM_XOO_CONTACT_VALUE', 'Valeur');
+define('_AM_XOO_CONTACT_REQUIRED', 'Requis');
+define('_AM_XOO_CONTACT_DISPLAY', 'Afficher');
 
-define('_AM_XOO_CONTACT_VIEW_HIDE', "Afficher / Masquer");
-define('_AM_XOO_CONTACT_REQUIRED_NOT', "Requis / Non requis");
-define('_AM_XOO_CONTACT_SAVED', "Les donn&#233;es ont &#233;t&#233; sauvegard&#233;es");
+define('_AM_XOO_CONTACT_VIEW_HIDE', 'Afficher / Masquer');
+define('_AM_XOO_CONTACT_REQUIRED_NOT', 'Requis / Non requis');
+define('_AM_XOO_CONTACT_SAVED', 'Les donn&#233;es ont &#233;t&#233; sauvegard&#233;es');
