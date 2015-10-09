@@ -1,7 +1,11 @@
 <hr><strong>1.01 Alpha 1         (NOT RELEASED)</strong>
 - updates for consistency with latest XOOPS 2.6.0 (mamba)
 - PSR-2 changes (mamba)
-- intval() to (int) and other PHP5 adjustments (mamba)
+- moved all images, CSS, and JS files to /assets (mamba)
+- renamed .html Smarty templates to .tpl (mamba)
+- added PhpDoc comments (mamba)
+- added namespaces (mamba)
+- added docs files (mamba)
 
 <hr><strong>1.0 Alpha 1         (2012-10)</strong>
 - First release (Dugris)
