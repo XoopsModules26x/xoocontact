@@ -17,60 +17,66 @@
  * @version         $Id$
  */
 
-include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'header.php';
+include __DIR__ .  '/header.php';
 
 switch ($op) {
     case 'submit':
-    if ( !$xoops->security()->check() ) {        $xoops->redirect('index.php', 3, implode('<br />', $xoops->security()->getErrors()));
-    }
+        if (!$xoops->security()->check()) {
+            $xoops->redirect('index.php', 3, implode('<br />', $xoops->security()->getErrors()));
+        }
 
-    XoopsLoad::load('xoopscaptcha');
-    $xoopsCaptcha = XoopsCaptcha::getInstance();
-    if ( !$xoopsCaptcha->verify() ) {        $xoops->redirect('index.php', 3, $xoopsCaptcha->getMessage());
-    }
+        XoopsLoad::load('xoopscaptcha');
+        $xoopsCaptcha = XoopsCaptcha::getInstance();
+        if (!$xoopsCaptcha->verify()) {
+            $xoops->redirect('index.php', 3, $xoopsCaptcha->getMessage());
+        }
 
-    $contact = array();
-    $myts = MyTextSanitizer::getInstance();
-    $fields = $contact_handler->getDisplay();
-    foreach( $fields as $k => $field ) {        $contact[$k] = $field->getValues();        if ( $field->getVar('xoocontact_formtype') == 'mail' ) {            if ( !( $_POST['xoocontact_field' . $k] = $xoops->checkEmail( $myts->stripSlashesGPC($_POST['xoocontact_field' . $k]) ) ) ) {
-                $xoops->redirect('index.php', 3, _XOO_CONTACT_INVALIDMAIL);
+        $contact = array();
+        $myts    = MyTextSanitizer::getInstance();
+        $fields  = $contact_handler->getDisplay();
+        foreach ($fields as $k => $field) {
+            $contact[$k] = $field->getValues();
+            if ($field->getVar('xoocontact_formtype') == 'mail') {
+                if (!($_POST['xoocontact_field' . $k] = $xoops->checkEmail($myts->stripSlashesGPC($_POST['xoocontact_field' . $k])))) {
+                    $xoops->redirect('index.php', 3, _XOO_CONTACT_INVALIDMAIL);
+                }
+            }
+            $contact[$k]['xoocontact_data'] = $system->cleanVars($_POST, 'xoocontact_field' . $k, $field->getVar('xoocontact_default'), $field->getVar('xoocontact_valuetype'));
+        }
+
+        $toContact = $system->cleanVars($_POST, 'message_copy', 0, 'int');
+
+        $messagesent = '';
+        // Mail to webmaster
+        $WebmasterMailer = new Xoocontact_Mail();
+        if ($WebmasterMailer->sendToWebmaser($contact)) {
+            $messagesent .= sprintf(_XOO_CONTACT_MESSAGESENT, $xoopsConfig['sitename']) . '<br />' . _XOO_CONTACT_THANKYOU;
+        }
+        unset($WebmasterMailer);
+
+        // Mail to visitor
+        $ContactMailer = new Xoocontact_Mail();
+        if ($toContact) {
+            if ($ContactMailer->sendToContact($contact)) {
+                $messagesent .= '<br />' . sprintf(_XOO_CONTACT_SENTASCONFIRM, '');
             }
         }
-        $contact[$k]['xoocontact_data'] = $system->cleanVars($_POST, 'xoocontact_field' . $k, $field->getVar('xoocontact_default'), $field->getVar('xoocontact_valuetype'));
-    }
-
-    $toContact = $system->cleanVars($_POST, 'message_copy', 0, 'int');
-
-    $messagesent = '';
-    // Mail to webmaster
-    $WebmasterMailer = new Xoocontact_Mail();
-    if ( $WebmasterMailer->sendToWebmaser( $contact ) ) {
-        $messagesent .= sprintf(_XOO_CONTACT_MESSAGESENT, $xoopsConfig['sitename']) . '<br />' . _XOO_CONTACT_THANKYOU;
-    }
-    unset($WebmasterMailer);
-
-    // Mail to visitor
-    $ContactMailer = new Xoocontact_Mail();
-    if ( $toContact ) {        if ( $ContactMailer->sendToContact( $contact ) ) {            $messagesent .= '<br />' . sprintf(_XOO_CONTACT_SENTASCONFIRM, '' );
-        }
-    }
-    unset($ContactMailer);
-    $xoops->redirect('index.php', 3, $messagesent);
-    break;
+        unset($ContactMailer);
+        $xoops->redirect('index.php', 3, $messagesent);
+        break;
 
     case 'default':
     default:
-    $xoops->header('xoocontact_form.html');
-    $xoops->theme()->addStylesheet('modules/xoocontact/css/module.css');
+        $xoops->header('xoocontact_form.tpl');
+        $xoops->theme()->addStylesheet('modules/xoocontact/assets/css/module.css');
 
-    $xoops->tpl()->assign('moduletitle', $xoops->module->name() );
-    $xoops->tpl()->assign('welcome', $contact_config['xoocontact_welcome'] );
+        $xoops->tpl()->assign('moduletitle', $xoops->module->name());
+        $xoops->tpl()->assign('welcome', $contact_config['xoocontact_welcome']);
 
-    $form = $xoops->getModuleForm(null, 'contact', 'xoocontact');
-    $form->ContactForm();
-    $form->display();
+        $form = $xoops->getModuleForm(null, 'contact', 'xoocontact');
+        $form->ContactForm();
+        $form->display();
 
-    $xoops->footer();
-    break;
+        $xoops->footer();
+        break;
 }
-?>

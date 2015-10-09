@@ -17,24 +17,25 @@
  * @version         $Id$
  */
 
-include dirname(__FILE__) . '/header.php';
+include __DIR__ . '/header.php';
 
-switch ($op) {    case 'save':
-    if (!$xoops->security()->check()) {
-        $xoops->redirect('preferences.php', 3, implode('<br />', $xoops->security()->getErrors()));
-    }
+switch ($op) {
+    case 'save':
+        if (!$xoops->security()->check()) {
+            $xoops->redirect('preferences.php', 3, implode('<br />', $xoops->security()->getErrors()));
+        }
 
-    $xoocontact_welcome     = $system->CleanVars($_POST, 'xoocontact_welcome', '', 'string');
-    $xoocontact_copymessage = $system->CleanVars($_POST, 'xoocontact_copymessage', 0, 'int');
+        $xoocontact_welcome     = Xoops\Core\Request::getString('xoocontact_welcome', '', 'POST');
+        $xoocontact_copymessage = Xoops\Core\Request::getInt('xoocontact_copymessage', 0, 'POST');
 
-    // Write configuration file
-    $object = XooContactPreferences::getInstance();
-    $object->writeConfig( $object->Prepare2Save() );
-    $xoops->redirect('preferences.php', 3, _XOO_CONFIG_SAVED);
-    break;
-    default:
-    $form = $contact_module->getForm($contact_config, 'preferences');
-    $form->display();
+        // Write configuration file
+        $object = XooContactPreferences::getInstance();
+        $object->writeConfig($object->Prepare2Save());
+        $xoops->redirect('preferences.php', 3, _XOO_CONFIG_SAVED);
+        break;
+
+    default:
+        $form = $contact_module->getForm($contact_config, 'preferences');
+        $form->display();
 }
-include dirname(__FILE__) . '/footer.php';
-?>
+include __DIR__ . '/footer.php';

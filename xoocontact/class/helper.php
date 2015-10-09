@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Xoocontact module
  *
@@ -11,21 +12,39 @@
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
- * @package         xoocontact
+ * @package         Xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
- * @version         $Id$
+ * @version         $Id:
  */
+class XooContact extends Xoops\Module\Helper\HelperAbstract
+{
+    /**
+     * Init the module
+     *
+     * @return null|void
+     */
+    public function init()
+    {
+        $this->setDirname(basename(dirname(__DIR__)));
+        $this->loadLanguage('preferences');
+    }
 
-define('_AM_XOO_CONTACT_MANAGER', 'Gestionnaire de formulaire');
+    /**
+     * @return mixed
+     */
+    public function LoadConfig()
+    {
+        XoopsLoad::load('xoopreferences', $this->_dirname);
 
-define('_AM_XOO_CONTACT_FIELD_NAME', 'Nom des champs');
-define('_AM_XOO_CONTACT_FIELD_VALUE', 'Valeur des champs');
-define('_AM_XOO_CONTACT_DESCRIPTION', 'Champs');
-define('_AM_XOO_CONTACT_VALUE', 'Valeur');
-define('_AM_XOO_CONTACT_REQUIRED', 'Requis');
-define('_AM_XOO_CONTACT_DISPLAY', 'Afficher');
+        return XooContactPreferences::getInstance()->getConfig();
+    }
 
-define('_AM_XOO_CONTACT_VIEW_HIDE', 'Afficher / Masquer');
-define('_AM_XOO_CONTACT_REQUIRED_NOT', 'Requis / Non requis');
-define('_AM_XOO_CONTACT_SAVED', 'Les donn&#233;es ont &#233;t&#233; sauvegard&#233;es');
+    /**
+     * @return \Xoops\Module\Helper\
+     */
+    public function ContactHandler()
+    {
+        return $this->getHandler('xoocontact_contact');
+    }
+}

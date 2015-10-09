@@ -17,12 +17,14 @@
  * @version         $Id$
  */
 
-defined('XOOPS_ROOT_PATH') or die('Restricted access');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 include_once XOOPS_ROOT_PATH . '/modules/xoocontact/install/install.php';
 
+/**
+ * @return bool
+ */
 function xoops_module_update_xoocontact()
 {
     return xoops_module_install_xoocontact();
 }
-?>

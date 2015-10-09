@@ -17,10 +17,9 @@
  * @version         $Id$
  */
 
-define("_MI_XOO_CONTACT_NAME",                "XooFoo - Contact Us");
-define("_MI_XOO_CONTACT_DESC",                "XooFoo - Contact Us<br />Module for xoops 2.6.0");
+define('_MI_XOO_CONTACT_NAME', 'XooFoo - Contact Us');
+define('_MI_XOO_CONTACT_DESC', 'XooFoo - Contact Us<br />Module for xoops 2.6.0');
 
-define("_MI_XOO_CONTACT_INDEX",               "Form manager");
-define("_MI_XOO_CONTACT_PREFERENCES",         "Preferences");
-define("_MI_XOO_CONTACT_ABOUT",               "About");
-?>
+define('_MI_XOO_CONTACT_INDEX', 'Form manager');
+define('_MI_XOO_CONTACT_PREFERENCES', 'Preferences');
+define('_MI_XOO_CONTACT_ABOUT', 'About');

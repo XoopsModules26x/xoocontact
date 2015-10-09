@@ -17,16 +17,15 @@
  * @version         $Id$
  */
 
-define("_AM_XOO_CONTACT_MANAGER",         "Form manager");
+define('_AM_XOO_CONTACT_MANAGER', 'Form manager');
 
-define("_AM_XOO_CONTACT_FIELD_NAME",      "Field name");
-define("_AM_XOO_CONTACT_FIELD_VALUE",     "Field value");
-define("_AM_XOO_CONTACT_DESCRIPTION",     "Field");
-define("_AM_XOO_CONTACT_VALUE",           "Value");
-define("_AM_XOO_CONTACT_REQUIRED",        "Required");
-define("_AM_XOO_CONTACT_DISPLAY",         "Display");
+define('_AM_XOO_CONTACT_FIELD_NAME', 'Field name');
+define('_AM_XOO_CONTACT_FIELD_VALUE', 'Field value');
+define('_AM_XOO_CONTACT_DESCRIPTION', 'Field');
+define('_AM_XOO_CONTACT_VALUE', 'Value');
+define('_AM_XOO_CONTACT_REQUIRED', 'Required');
+define('_AM_XOO_CONTACT_DISPLAY', 'Display');
 
-define("_AM_XOO_CONTACT_VIEW_HIDE",       "View / Hide");
-define("_AM_XOO_CONTACT_REQUIRED_NOT",    "Required / Not required");
-define("_AM_XOO_CONTACT_SAVED",           "Data was saved");
-?>
+define('_AM_XOO_CONTACT_VIEW_HIDE', 'View / Hide');
+define('_AM_XOO_CONTACT_REQUIRED_NOT', 'Required / Not required');
+define('_AM_XOO_CONTACT_SAVED', 'Data was saved');
