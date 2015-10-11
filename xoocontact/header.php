@@ -17,8 +17,10 @@
  * @version         $Id$
  */
 
+use Xoops\Core\Request;
+
 include dirname(dirname(__DIR__)) .  '/mainfile.php';
-include __DIR__ .  '/class' .  '/xoocontact_mail.php';
+include __DIR__ .  '/class' .  '/mail.php';
 
 XoopsLoad::load('system', 'system');
 $system = System::getInstance();
@@ -36,8 +38,8 @@ if (isset($_GET)) {
     }
 }
 
-$op = $system->cleanVars($_REQUEST, 'op', 'default', 'string');
+$op = Request::getCmd('op', 'default');
 
-$contact_module  = Xoocontact::getInstance();
-$contact_config  = $contact_module->LoadConfig();
-$contact_handler = $contact_module->ContactHandler();
+$contactModule  = XooContact::getInstance();
+$contactConfig  = $contactModule->loadConfig();
+$contactHandler = $contactModule->contactHandler();

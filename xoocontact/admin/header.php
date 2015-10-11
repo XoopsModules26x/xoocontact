@@ -17,6 +17,8 @@
  * @version         $Id$
  */
 
+use Xoops\Core\Request;
+
 require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 
 $op = '';
@@ -31,13 +33,13 @@ if (isset($_GET)) {
     }
 }
 
-$script_name = basename($_SERVER['SCRIPT_NAME'], '.php');
+$script_name = basename(Request::getString('SCRIPT_NAME', 'index', 'SERVER'), '.php');//$_SERVER['SCRIPT_NAME'], '.php');
 
 XoopsLoad::load('system', 'system');
 $system = System::getInstance();
 
 $xoops = Xoops::getInstance();
-if ($script_name != 'about') {
+if ($script_name !== 'about') {
     $xoops->header('xoocontact_admin_' . $script_name . '.tpl');
 } else {
     $xoops->header();
@@ -45,12 +47,12 @@ if ($script_name != 'about') {
 $xoops->theme()->addStylesheet('modules/xoocontact/assets/css/moduladmin.css');
 
 $admin_page = new \Xoops\Module\Admin();
-if ($script_name != 'about' && $script_name != 'index') {
-    $admin_page->renderNavigation(basename($_SERVER['SCRIPT_NAME']));
-} elseif ($script_name != 'index') {
-    $admin_page->displayNavigation(basename($_SERVER['SCRIPT_NAME']));
+if ($script_name !== 'about' && $script_name !== 'index') {
+    $admin_page->renderNavigation(basename(Request::getString('SCRIPT_NAME', 'index', 'SERVER')));
+} elseif ($script_name !== 'index') {
+    $admin_page->displayNavigation(basename(Request::getString('SCRIPT_NAME', 'index', 'SERVER')));
 }
 
-$contact_module  = XooContact::getInstance();
-$contact_config  = $contact_module->LoadConfig();
-$contact_handler = $contact_module->ContactHandler();
+$contactModule  = XooContact::getInstance();
+$contactConfig  = $contactModule->loadConfig();
+$contactHandler = $contactModule->contactHandler();

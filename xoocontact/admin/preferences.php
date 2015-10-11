@@ -17,6 +17,8 @@
  * @version         $Id$
  */
 
+use Xoops\Core\Request;
+
 include __DIR__ . '/header.php';
 
 switch ($op) {
@@ -25,17 +27,17 @@ switch ($op) {
             $xoops->redirect('preferences.php', 3, implode('<br />', $xoops->security()->getErrors()));
         }
 
-        $xoocontact_welcome     = Xoops\Core\Request::getString('xoocontact_welcome', '', 'POST');
-        $xoocontact_copymessage = Xoops\Core\Request::getInt('xoocontact_copymessage', 0, 'POST');
+        $xoocontact_welcome     = Request::getString('xoocontact_welcome', '', 'POST');
+        $xoocontact_copymessage = Request::getInt('xoocontact_copymessage', 0, 'POST');
 
         // Write configuration file
         $object = XooContactPreferences::getInstance();
-        $object->writeConfig($object->Prepare2Save());
+        $object->writeConfig($object->prepare2Save());
         $xoops->redirect('preferences.php', 3, _XOO_CONFIG_SAVED);
         break;
 
     default:
-        $form = $contact_module->getForm($contact_config, 'preferences');
+        $form = $contactModule->getForm($contactConfig, 'preferences');
         $form->display();
 }
 include __DIR__ . '/footer.php';

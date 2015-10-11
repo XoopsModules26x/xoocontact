@@ -17,15 +17,13 @@
  * @version         $Id$
  */
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access');
-
 /**
  * @return bool
  */
 function xoops_module_install_xoocontact()
 {
     $xoops = Xoops::getInstance();
-    xoocontact_mkdirs($xoops->path(XOOPS_VAR_PATH) . '/configs/xoocontact');
+    xoocontact_mkdirs($xoops->path(\XoopsBaseConfig::get('var-path')) . '/configs/xoocontact');
 
     return true;
 }
@@ -39,7 +37,7 @@ function xoops_module_install_xoocontact()
 function xoocontact_mkdirs($pathname, $pathout = XOOPS_ROOT_PATH)
 {
     $xoops    = Xoops::getInstance();
-    $pathname = substr($pathname, strlen(XOOPS_ROOT_PATH));
+    $pathname = substr($pathname, strlen(\XoopsBaseConfig::get('root-path')));
     $pathname = str_replace(DIRECTORY_SEPARATOR, '/', $pathname);
 
     $dest  = $pathout;

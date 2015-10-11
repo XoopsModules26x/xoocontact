@@ -17,12 +17,11 @@
  * @version         $Id$
  */
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
- * Class Xoocontact_Mail
+ * Class XoocontactMail
  */
-class Xoocontact_Mail
+class XoocontactMail
 {
     // constructor
     /**
@@ -31,8 +30,8 @@ class Xoocontact_Mail
     public function __construct()
     {
         $xoops             = Xoops::getInstance();
-        $this->customPath  = XOOPS_ROOT_PATH . '/themes/' . $xoops->getConfig('theme_set') . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
-        $this->defaultPath = XOOPS_ROOT_PATH . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
+        $this->customPath  = \XoopsBaseConfig::get('themes-path') . $xoops->getConfig('theme_set') . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
+        $this->defaultPath = \XoopsBaseConfig::get('root-path') . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
 
         $this->webmasterMail = $xoops->getConfig('adminmail');
         $this->webmasterName = $xoops->getConfig('sitename');
@@ -40,14 +39,9 @@ class Xoocontact_Mail
         $this->xoopsMailer = $xoops->getMailer();
         $this->xoopsMailer->useMail();
         $this->xoopsMailer->setHTML(true);
-        $this->xoopsMailer->assign('XOOCONTACT_SITE_URL', XOOPS_URL);
+        $this->xoopsMailer->assign('XOOCONTACT_SITE_URL', \XoopsBaseConfig::get('url'));
         $this->xoopsMailer->assign('XOOCONTACT_SITE_NAME', $xoops->getConfig('sitename'));
         $this->xoopsMailer->setSubject($xoops->getConfig('sitename') . ' - ' . _XOO_CONTACT_CONTACTFORM);
-    }
-
-    public function Xoocontact_Mail()
-    {
-        $this->__construct();
     }
 
     /**
@@ -71,7 +65,7 @@ class Xoocontact_Mail
      *
      * @return bool
      */
-    public function sendToWebmaser($contact)
+    public function sendToWebmaster($contact)
     {
         $this->setVariables($contact);
         $this->setTemplate('xoocontact_webmaster.tpl');

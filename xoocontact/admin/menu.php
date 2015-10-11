@@ -23,7 +23,7 @@ $adminmenu[$i]['link']  = 'admin/index.php';
 $adminmenu[$i]['icon']  = 'home.png';
 
 $xoops = Xoops::getInstance();
-if ($xoops->isadmin()) {
+if ($xoops->isAdmin()) {
     ++$i;
     $adminmenu[$i]['title'] = _MI_XOO_CONTACT_PREFERENCES;
     $adminmenu[$i]['link']  = 'admin/preferences.php';
