@@ -22,9 +22,9 @@ use Xoops\Core\Kernel\XoopsObject;
 use Xoops\Core\Kernel\XoopsPersistableObjectHandler;
 
 /**
- * Class Xoocontact_contact
+ * Class XoocontactContact
  */
-class Xoocontact_contact extends XoopsObject
+class XoocontactContact extends XoopsObject
 {
     // constructor
     /**
@@ -47,11 +47,6 @@ class Xoocontact_contact extends XoopsObject
         // Pour autoriser le html
         $this->initVar('dohtml', XOBJ_DTYPE_INT, 1, false);
     }
-
-//    private function Xoocontact_contact()
-//    {
-//        $this->__construct();
-//    }
 
     /**
      * @return bool
@@ -126,16 +121,16 @@ class Xoocontact_contact extends XoopsObject
 }
 
 /**
- * Class XoocontactXoocontact_contactHandler
+ * Class XoocontactXoocontactContactHandler
  */
-class XoocontactXoocontact_contactHandler extends XoopsPersistableObjectHandler
+class XoocontactContactHandler extends XoopsPersistableObjectHandler
 {
     /**
      * @param null|Connection $db
      */
     public function __construct(Connection $db = null)
     {
-        parent::__construct($db, 'xoocontact_fields', 'Xoocontact_contact', 'xoocontact_id', 'xoocontact_description');
+        parent::__construct($db, 'xoocontact_fields', 'XoocontactContact', 'xoocontact_id', 'xoocontact_description');
     }
 
     /**

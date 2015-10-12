@@ -17,6 +17,12 @@
  * @author          Laurent JEN (Aka DuGris)
  * @version         $Id$
  */
+
+use Xoops\Core\Request;
+
+/**
+ * Class XoocontactContactForm
+ */
 class XoocontactContactForm extends Xoops\Form\ThemeForm
 
 {
@@ -32,15 +38,15 @@ class XoocontactContactForm extends Xoops\Form\ThemeForm
      *
      * @return void
      */
-    public function ContactForm()
+    public function contactForm()
     {
-        $contact_module  = Xoocontact::getInstance();
-        $contact_config  = $contact_module->LoadConfig();
-        $contact_handler = $contact_module->ContactHandler();
+        $contactModule  = XooContact::getInstance();
+        $contactConfig  = $contactModule->loadConfig();
+        $contactHandler = $contactModule->contactHandler();
 
         parent::__construct('', 'xoocontact_form', 'index.php', 'post', true, 'horizontal');
 
-        $fields = $contact_handler->getDisplay();
+        $fields = $contactHandler->getDisplay();
         foreach ($fields as $k => $field) {
             $ele = $this->getForm($field);
             if (is_object($ele) && (is_subclass_of($ele, 'Xoops\Form\Element') || is_subclass_of($ele, 'Xoops\Form\TextArea'))) {
@@ -48,16 +54,16 @@ class XoocontactContactForm extends Xoops\Form\ThemeForm
             }
         }
 
-        if ($contact_config['xoocontact_copymessage']) {
+        if ($contactConfig['xoocontact_copymessage']) {
             $this->addElement(new Xoops\Form\RadioYesNo(_XOO_CONTACT_COPYMESSAGE, 'message_copy', 0), true);
         }
 
         $this->addElement(new Xoops\Form\Captcha(null, null, false), true);
 
-        $button_tray = new Xoops\Form\ElementTray('&nbsp;', '&nbsp;');
-        $button_tray->addElement(new Xoops\Form\Hidden('op', 'submit'));
-        $button_tray->addElement(new Xoops\Form\Button('', '', _XOO_CONTACT_SUBMIT, 'submit'));
-        $this->addElement($button_tray);
+        $buttonTray = new Xoops\Form\ElementTray('&nbsp;', '&nbsp;');
+        $buttonTray->addElement(new Xoops\Form\Hidden('op', 'submit'));
+        $buttonTray->addElement(new Xoops\Form\Button('', '', _XOO_CONTACT_SUBMIT, 'submit'));
+        $this->addElement($buttonTray);
     }
 
     /**
@@ -68,9 +74,9 @@ class XoocontactContactForm extends Xoops\Form\ThemeForm
     public function getForm($fieldObj)
     {
         $system          = System::getInstance();
-        $contact_module  = Xoocontact::getInstance();
-        $contact_config  = $contact_module->LoadConfig();
-        $contact_handler = $contact_module->ContactHandler();
+        $contactModule  = XooContact::getInstance();
+        $contactConfig  = $contactModule->loadConfig();
+        $contactHandler = $contactModule->contactHandler();
 
         $myts = MyTextSanitizer::getInstance();
 
@@ -78,7 +84,8 @@ class XoocontactContactForm extends Xoops\Form\ThemeForm
 
         $title = $fieldObj->getVar('xoocontact_description');
         $field = 'xoocontact_field' . $fieldObj->getVar('xoocontact_id');
-        $value = $system->cleanVars($_POST, $field, $fieldObj->getVar('xoocontact_default'), $fieldObj->getVar('xoocontact_valuetype'));
+//        $value = $system->cleanVars($_POST, $field, $fieldObj->getVar('xoocontact_default'), $fieldObj->getVar('xoocontact_valuetype'));
+        $value = Request::getVar($field, $fieldObj->getVar('xoocontact_default'), 'POST', $fieldObj->getVar('xoocontact_valuetype'));
 
         switch ($fieldObj->getVar('xoocontact_formtype')) {
             case 'textbox':
@@ -102,15 +109,15 @@ class XoocontactContactForm extends Xoops\Form\ThemeForm
                 break;
 
             case 'editor':
-                $editor_configs           = array();
-                $editor_configs['name']   = $field;
-                $editor_configs['value']  = $value;
-                $editor_configs['rows']   = 3;
-                $editor_configs['cols']   = 100;
-                $editor_configs['width']  = '80%';
-                $editor_configs['height'] = '500px';
-                $editor_configs['editor'] = $contact_config['xoocontact_editor'];
-                $ele                      = new Xoops\Form\Editor($title, $field, $editor_configs);
+                $editorConfigs           = array();
+                $editorConfigs['name']   = $field;
+                $editorConfigs['value']  = $value;
+                $editorConfigs['rows']   = 3;
+                $editorConfigs['cols']   = 100;
+                $editorConfigs['width']  = '80%';
+                $editorConfigs['height'] = '500px';
+                $editorConfigs['editor'] = $contactConfig['xoocontact_editor'];
+                $ele                      = new Xoops\Form\Editor($title, $field, $editorConfigs);
                 break;
 
             case 'select':
@@ -132,11 +139,11 @@ class XoocontactContactForm extends Xoops\Form\ThemeForm
                 break;
 
             case 'yesno':
-                $ele = new Xoops\Form\RadioYesNo($title, $field, $value, _YES, _NO);
+                $ele = new Xoops\Form\RadioYesNo($title, $field, $value, XoopsLocale::YES, XoopsLocale::NO);
                 break;
 
             case 'hidden':
-                $ele = new Xoops\Form\Hidden($field, $myts->htmlspecialchars($fieldObj->getVar('xoocontact_value', 'e')));
+                $ele = new Xoops\Form\Hidden($field, $myts->htmlSpecialChars($fieldObj->getVar('xoocontact_value', 'e')));
                 break;
 
             case 'line_break':

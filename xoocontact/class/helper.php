@@ -33,7 +33,7 @@ class XooContact extends Xoops\Module\Helper\HelperAbstract
     /**
      * @return mixed
      */
-    public function LoadConfig()
+    public function loadConfig()
     {
         XoopsLoad::load('xoopreferences', $this->_dirname);
 
@@ -43,8 +43,8 @@ class XooContact extends Xoops\Module\Helper\HelperAbstract
     /**
      * @return \Xoops\Module\Helper\
      */
-    public function ContactHandler()
+    public function contactHandler()
     {
-        return $this->getHandler('xoocontact_contact');
+        return $this->getHandler('Contact');
     }
 }
