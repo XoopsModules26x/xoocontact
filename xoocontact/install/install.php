@@ -50,7 +50,7 @@ function xoocontact_mkdirs($pathname, $pathout = XOOPS_ROOT_PATH)
                 if (!mkdir($dest, 0755)) {
                     return false;
                 } else {
-                    xoocontact_copyfile($xoops->path('uploads'), 'index.html', $dest);
+                    xoocontact_copyfile(\XoopsBaseConfig::get('uploads-path'), 'index.html', $dest);
                 }
             }
         }

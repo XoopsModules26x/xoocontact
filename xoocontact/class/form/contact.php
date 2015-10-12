@@ -20,6 +20,9 @@
 
 use Xoops\Core\Request;
 
+/**
+ * Class XoocontactContactForm
+ */
 class XoocontactContactForm extends Xoops\Form\ThemeForm
 
 {

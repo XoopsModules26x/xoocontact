@@ -156,7 +156,7 @@ class XooContactPreferences
                     if (!mkdir($dest, 0755)) {
                         return false;
                     } else {
-                        $this->writeIndex($xoops->path('uploads'), 'index.html', $dest);
+                        $this->writeIndex(\XoopsBaseConfig::get('uploads-path'), 'index.html', $dest);
                     }
                 }
             }
