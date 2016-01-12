@@ -14,7 +14,6 @@
  * @package         xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
- * @version         $Id$
  */
 
 define('_MI_XOO_CONTACT_NAME', 'XooFoo - Contact Us');

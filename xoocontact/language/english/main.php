@@ -14,7 +14,6 @@
  * @package         xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
- * @version         $Id$
  */
 
 define('_XOO_CONTACT_COPYMESSAGE', 'Do you require a copy of your email ?');

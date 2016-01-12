@@ -14,7 +14,6 @@
  * @package         Xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
- * @version         $Id: core.php 1347 2012-12-19 21:06:29Z DuGris $
  */
 
 use Xoops\Core\PreloadItem;

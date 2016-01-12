@@ -15,7 +15,6 @@
  * @package         Xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
- * @version         $Id$
  */
 class XoocontactPreferencesForm extends Xoops\Form\ThemeForm
 {
