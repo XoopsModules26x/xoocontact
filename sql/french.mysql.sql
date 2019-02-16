@@ -12,7 +12,7 @@ CREATE TABLE `xoocontact_fields` (
   `xoocontact_order`       TINYINT(3)   NOT NULL,
   PRIMARY KEY (`xoocontact_id`)
 )
-  ENGINE =MyISAM;
+  ENGINE = MyISAM;
 
 INSERT INTO `xoocontact_fields` (`xoocontact_id`, `xoocontact_description`, `xoocontact_value`, `xoocontact_formtype`, `xoocontact_valuetype`, `xoocontact_default`, `xoocontact_min_width`, `xoocontact_max_width`, `xoocontact_required`, `xoocontact_display`, `xoocontact_order`)
 VALUES (1, 'Title', 'a:3:{i:1;s:4:"Mlle";i:2;s:3:"Mme";i:3;s:2:"Mr";}', 'radio', 'int', '0', 0, 0, 1, 1, 1);

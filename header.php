@@ -15,11 +15,11 @@
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-
 use Xoops\Core\Request;
+use XoopsModules\Xoocontact;
 
-include dirname(dirname(__DIR__)) .  '/mainfile.php';
-include __DIR__ .  '/class' .  '/mail.php';
+include dirname(dirname(__DIR__)) . '/mainfile.php';
+include __DIR__ . '/class' . '/mail.php';
 
 XoopsLoad::load('system', 'system');
 $system = System::getInstance();
@@ -39,6 +39,6 @@ if (isset($_GET)) {
 
 $op = Request::getCmd('op', 'default');
 
-$contactModule  = XooContact::getInstance();
-$contactConfig  = $contactModule->loadConfig();
-$contactHandler = $contactModule->contactHandler();
+$helper = \XoopsModules\Xoocontact\Helper::getInstance();
+$contactConfig = $helper->loadConfig();
+$contactHandler = $helper->getHandler('Contact');

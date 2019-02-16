@@ -15,7 +15,6 @@
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-
 define('_AM_XOO_CONTACT_MANAGER', 'Gestionnaire de formulaire');
 
 define('_AM_XOO_CONTACT_FIELD_NAME', 'Nom des champs');

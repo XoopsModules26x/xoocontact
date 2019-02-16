@@ -15,28 +15,29 @@
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-
 use Xoops\Core\Request;
+use XoopsModules\Xoocontact;
 
 include __DIR__ . '/header.php';
+
+$helper->loadLanguage('preferences');
 
 switch ($op) {
     case 'save':
         if (!$xoops->security()->check()) {
-            $xoops->redirect('preferences.php', 3, implode('<br />', $xoops->security()->getErrors()));
+            $xoops->redirect('preferences.php', 3, implode('<br>', $xoops->security()->getErrors()));
         }
 
-        $xoocontact_welcome     = Request::getString('xoocontact_welcome', '', 'POST');
+        $xoocontact_welcome = Request::getString('xoocontact_welcome', '', 'POST');
         $xoocontact_copymessage = Request::getInt('xoocontact_copymessage', 0, 'POST');
 
         // Write configuration file
-        $object = XooContactPreferences::getInstance();
+        $object = XooContact\Preferences::getInstance();
         $object->writeConfig($object->prepare2Save());
         $xoops->redirect('preferences.php', 3, _XOO_CONFIG_SAVED);
         break;
-
     default:
-        $form = $contactModule->getForm($contactConfig, 'preferences');
+        $form = new \XoopsModules\Xoocontact\Form\PreferencesForm($contactConfig);
         $form->display();
 }
 include __DIR__ . '/footer.php';

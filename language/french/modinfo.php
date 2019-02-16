@@ -15,9 +15,8 @@
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-
 define('_MI_XOO_CONTACT_NAME', 'XooFoo - Nous contactez');
-define('_MI_XOO_CONTACT_DESC', 'XooFoo - Nous contactez<br />Module pour xoops 2.6.0');
+define('_MI_XOO_CONTACT_DESC', 'XooFoo - Nous contactez<br>Module pour xoops 2.6.0');
 
 define('_MI_XOO_CONTACT_INDEX', 'Gestionnaire de formulaire');
 define('_MI_XOO_CONTACT_PREFERENCES', 'Pr&#233;f&#233;rences');

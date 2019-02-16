@@ -21,7 +21,13 @@
  */
 function xoops_module_install_xoocontact()
 {
-    $xoops = Xoops::getInstance();
+    $xoops = \Xoops::getInstance();
+    $prefix = 'XoopsModules\\' . ucfirst(basename(dirname(__DIR__)));
+    $path = dirname(__DIR__);
+    $psr4loader = new \Xoops\Core\Psr4ClassLoader();
+    $psr4loader->register();
+    $psr4loader->addNamespace($prefix, $path . '/class/');
+
     xoocontact_mkdirs($xoops->path(\XoopsBaseConfig::get('var-path')) . '/configs/xoocontact');
 
     return true;
@@ -35,11 +41,11 @@ function xoops_module_install_xoocontact()
  */
 function xoocontact_mkdirs($pathname, $pathout = XOOPS_ROOT_PATH)
 {
-    $xoops    = Xoops::getInstance();
-    $pathname = substr($pathname, strlen(\XoopsBaseConfig::get('root-path')));
+    $xoops = \Xoops::getInstance();
+    $pathname = mb_substr($pathname, mb_strlen(\XoopsBaseConfig::get('root-path')));
     $pathname = str_replace(DIRECTORY_SEPARATOR, '/', $pathname);
 
-    $dest  = $pathout;
+    $dest = $pathout;
     $paths = explode('/', $pathname);
 
     foreach ($paths as $path) {
@@ -48,9 +54,8 @@ function xoocontact_mkdirs($pathname, $pathout = XOOPS_ROOT_PATH)
             if (!is_dir($dest)) {
                 if (!mkdir($dest, 0755)) {
                     return false;
-                } else {
-                    xoocontact_copyfile(\XoopsBaseConfig::get('uploads-path'), 'index.html', $dest);
                 }
+                xoocontact_copyfile(\XoopsBaseConfig::get('uploads-path'), 'index.html', $dest);
             }
         }
     }

@@ -16,6 +16,6 @@
  * @author          Laurent JEN (Aka DuGris)
  */
 
-return array(
-    'can_be_hidden' => array(4, 6, 7)
-);
+return [
+    'can_be_hidden' => [4, 6, 7],
+];

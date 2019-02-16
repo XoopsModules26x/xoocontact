@@ -1,4 +1,7 @@
 <?php
+
+namespace XoopsModules\Xoocontact;
+
 /**
  * Xoocontact module
  *
@@ -15,20 +18,19 @@
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
+use XoopsModules\Xoocontact;
 
 /**
- * Class XoocontactMail
+ * class Mail
  */
-class XoocontactMail
+class Mail
 {
     // constructor
-    /**
-     *
-     */
+
     public function __construct()
     {
-        $xoops             = Xoops::getInstance();
-        $this->customPath  = \XoopsBaseConfig::get('themes-path') . $xoops->getConfig('theme_set') . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
+        $xoops = \Xoops::getInstance();
+        $this->customPath = \XoopsBaseConfig::get('themes-path') . $xoops->getConfig('theme_set') . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
         $this->defaultPath = \XoopsBaseConfig::get('root-path') . '/modules/xoocontact/language/' . $xoops->getConfig('language') . '/mail_template';
 
         $this->webmasterMail = $xoops->getConfig('adminmail');
@@ -99,11 +101,9 @@ class XoocontactMail
                 case 'select':
                     $this->xoopsMailer->assign('XOOCONTACT_VALUE' . $k, $v['xoocontact_value'][$v['xoocontact_data']]);
                     break;
-
                 case 'radio':
                     $this->xoopsMailer->assign('XOOCONTACT_VALUE' . $k, $v['xoocontact_value'][$v['xoocontact_data']]);
                     break;
-
                 case 'mail':
                     $this->contact_mail = $v['xoocontact_data'];
                     break;

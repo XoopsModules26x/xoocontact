@@ -1,5 +1,7 @@
 <?php
 
+namespace XoopsModules\Xoocontact;
+
 /**
  * Xoocontact module
  *
@@ -16,8 +18,28 @@
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-class XooContact extends Xoops\Module\Helper\HelperAbstract
+use Xoops\Module\Helper\HelperAbstract;
+use XoopsLoad;
+use XoopsModules\Xoocontact;
+
+/**
+ * Class Helper
+ * @package XoopsModules\Xoocontact
+ */
+class Helper extends HelperAbstract
 {
+    public $debug;
+
+    /**
+     * @internal param $debug
+     * @param bool $debug
+     */
+    protected function __construct($debug = false)
+    {
+        $this->debug = $debug;
+        $this->dirname = basename(dirname(__DIR__));
+    }
+
     /**
      * Init the module
      *
@@ -34,16 +56,57 @@ class XooContact extends Xoops\Module\Helper\HelperAbstract
      */
     public function loadConfig()
     {
-        XoopsLoad::load('xoopreferences', $this->_dirname);
+//        XoopsLoad::load('xoopreferences', $this->dirname);
 
-        return XooContactPreferences::getInstance()->getConfig();
+        return Xoocontact\Preferences::getInstance()->getConfig();
+    }
+
+//    /**
+//     * @return \XoopsModules\Xoocontact\Helper
+//     */
+//    public function contactHandler()
+//    {
+//        return $this->getHandler('Contact');
+//    }
+
+    /**
+     * @param bool $debug
+     *
+     * @return \XoopsModules\Xoocontact\Helper
+     */
+    public static function getInstance($debug = false)
+    {
+        static $instance;
+        if (null === $instance) {
+            $instance = new static($debug);
+        }
+
+        return $instance;
     }
 
     /**
-     * @return \Xoops\Module\Helper\
+     * @return string
      */
-    public function contactHandler()
+    public function getDirname()
     {
-        return $this->getHandler('Contact');
+        return $this->dirname;
+    }
+
+    /**
+     * Get an Object Handler
+     *
+     * @param string $name name of handler to load
+     *
+     * @return bool|\XoopsObjectHandler|\XoopsPersistableObjectHandler
+     */
+    public function getHandler($name)
+    {
+        $ret = false;
+//        /** @var Connection $db */
+        $db = \XoopsDatabaseFactory::getConnection();
+        $class = '\\XoopsModules\\' . ucfirst(mb_strtolower(basename(dirname(__DIR__)))) . '\\' . $name . 'Handler';
+        $ret = new $class($db);
+
+        return $ret;
     }
 }

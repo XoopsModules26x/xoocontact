@@ -15,21 +15,20 @@
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-
-$i                      = 1;
+$i = 1;
 $adminmenu[$i]['title'] = _MI_XOO_CONTACT_INDEX;
-$adminmenu[$i]['link']  = 'admin/index.php';
-$adminmenu[$i]['icon']  = 'home.png';
+$adminmenu[$i]['link'] = 'admin/index.php';
+$adminmenu[$i]['icon'] = 'home.png';
 
-$xoops = Xoops::getInstance();
+$xoops = \Xoops::getInstance();
 if ($xoops->isAdmin()) {
     ++$i;
     $adminmenu[$i]['title'] = _MI_XOO_CONTACT_PREFERENCES;
-    $adminmenu[$i]['link']  = 'admin/preferences.php';
-    $adminmenu[$i]['icon']  = 'administration.png';
+    $adminmenu[$i]['link'] = 'admin/preferences.php';
+    $adminmenu[$i]['icon'] = 'administration.png';
 }
 
 ++$i;
 $adminmenu[$i]['title'] = _MI_XOO_CONTACT_ABOUT;
-$adminmenu[$i]['link']  = 'admin/about.php';
-$adminmenu[$i]['icon']  = 'about.png';
+$adminmenu[$i]['link'] = 'admin/about.php';
+$adminmenu[$i]['icon'] = 'about.png';

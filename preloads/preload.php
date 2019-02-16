@@ -15,7 +15,6 @@
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-
 use Xoops\Core\PreloadItem;
 
 /**
@@ -28,11 +27,6 @@ class XoocontactPreload extends PreloadItem
      */
     public static function eventCoreIncludeCommonEnd($args)
     {
-        $path = dirname(__DIR__);
-        XoopsLoad::addMap(
-            array(
-                'xoocontact' => $path . '/class/helper.php'
-            )
-        );
+        require_once __DIR__ . '/autoloader.php';
     }
 }

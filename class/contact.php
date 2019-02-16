@@ -1,4 +1,7 @@
 <?php
+
+namespace XoopsModules\Xoocontact;
+
 /**
  * Xoocontact module
  *
@@ -15,20 +18,16 @@
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-
-use Xoops\Core\Database\Connection;
-use Xoops\Core\Kernel\XoopsObject;
-use Xoops\Core\Kernel\XoopsPersistableObjectHandler;
+use XoopsLoad;
+use XoopsModules\Xoocontact;
 
 /**
- * Class XoocontactContact
+ * class Contact
  */
-class XoocontactContact extends XoopsObject
+class Contact extends \XoopsObject
 {
     // constructor
-    /**
-     *
-     */
+
     public function __construct()
     {
         $this->initVar('xoocontact_id', XOBJ_DTYPE_INT, 0, false, 11);
@@ -100,7 +99,7 @@ class XoocontactContact extends XoopsObject
         $autoload = XoopsLoad::loadConfig('xoocontact');
 
         $ret = parent::getValues();
-        if (in_array($this->getVar('xoocontact_id'), $autoload['can_be_hidden'])) {
+        if (in_array($this->getVar('xoocontact_id'), $autoload['can_be_hidden'], true)) {
             $ret['can_be_hidden'] = false;
         } else {
             $ret['can_be_hidden'] = true;
@@ -116,46 +115,5 @@ class XoocontactContact extends XoopsObject
         }
 
         return $ret;
-    }
-}
-
-/**
- * Class XoocontactXoocontactContactHandler
- */
-class XoocontactContactHandler extends XoopsPersistableObjectHandler
-{
-    /**
-     * @param null|Connection $db
-     */
-    public function __construct(Connection $db = null)
-    {
-        parent::__construct($db, 'xoocontact_fields', 'XoocontactContact', 'xoocontact_id', 'xoocontact_description');
-    }
-
-    /**
-     * @return array
-     */
-    public function renderAdminList()
-    {
-        $criteria = new CriteriaCompo();
-        $criteria->setSort('xoocontact_order');
-        $criteria->setOrder('asc');
-
-        return $this->getObjects($criteria, true, false);
-    }
-
-    /**
-     * @param bool $asObject
-     *
-     * @return array
-     */
-    public function getDisplay($asObject = true)
-    {
-        $criteria = new CriteriaCompo();
-        $criteria->add(new Criteria('xoocontact_display', 1));
-        $criteria->setSort('xoocontact_order');
-        $criteria->setOrder('asc');
-
-        return $this->getObjects($criteria, true, $asObject);
     }
 }

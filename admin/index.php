@@ -15,6 +15,7 @@
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
+use XoopsModules\Xoocontact;
 
 include __DIR__ . '/header.php';
 
@@ -25,28 +26,24 @@ switch ($op) {
         $contactHandler->insert($field);
         $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
         break;
-
     case 'hide':
         $field = $contactHandler->get($xoocontact_id);
         $field->setHide();
         $contactHandler->insert($field);
         $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
         break;
-
     case 'req':
         $field = $contactHandler->get($xoocontact_id);
         $field->setRequired();
         $contactHandler->insert($field);
         $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
         break;
-
     case 'notreq':
         $field = $contactHandler->get($xoocontact_id);
         $field->setNotRequired();
         $contactHandler->insert($field);
         $xoops->redirect('index.php', 5, _AM_XOO_CONTACT_SAVED);
         break;
-
     default:
         // teaser
         $xoops->header();
