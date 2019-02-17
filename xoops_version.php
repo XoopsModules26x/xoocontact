@@ -17,51 +17,49 @@
  */
 require_once __DIR__ . '/preloads/autoloader.php';
 
-$modversion = [];
-$modversion['dirname'] = basename(__DIR__);
-$modversion['name'] = _MI_XOO_CONTACT_NAME;
-$modversion['description'] = _MI_XOO_CONTACT_DESC;
-$modversion['version'] = 1.01;
-$modversion['author'] = 'XooFoo - Laurent JEN';
-$modversion['nickname'] = 'aka DuGris';
-$modversion['credits'] = 'DuGris.XooFoo Project';
-$modversion['license'] = 'GNU GPL 2.0';
-$modversion['license_url'] = 'www.gnu.org/licenses/gpl-2.0.html/';
-$modversion['official'] = 1;
-$modversion['help'] = 'page=help';
-$modversion['image'] = 'assets/images/logo.png';
-
-// about
-$modversion['release_date'] = '2015/10/01';
-$modversion['module_website_url'] = 'xoops.org';
-$modversion['module_website_name'] = 'XOOPS Project';
+$modversion                  = [];
+$modversion['version']       = 1.01;
 $modversion['module_status'] = 'Alpha 1';
-$modversion['min_php'] = '5.5';
-$modversion['min_xoops'] = '2.6.0';
-$modversion['min_db'] = ['mysql' => '5.0.7', 'mysqli' => '5.0.7'];
-
+$modversion['release_date']  = '2019/02/15';
+$modversion['dirname']       = basename(__DIR__);
+$modversion['name']          = _MI_XOO_CONTACT_NAME;
+$modversion['description']   = _MI_XOO_CONTACT_DESC;
+$modversion['author']        = 'XooFoo - Laurent JEN';
+$modversion['nickname']      = 'aka DuGris';
+$modversion['credits']       = 'DuGris.XooFoo Project';
+$modversion['license']       = 'GNU GPL 2.0';
+$modversion['license_url']   = 'www.gnu.org/licenses/gpl-2.0.html/';
+$modversion['official']      = 1;
+$modversion['help']          = 'page=help';
+$modversion['image']         = 'assets/images/logo.png';
+// about
+$modversion['module_website_url']  = 'xoops.org';
+$modversion['module_website_name'] = 'XOOPS Project';
+$modversion['min_php']             = '7.1.0';
+$modversion['min_xoops']           = '2.6.0';
+$modversion['min_db']              = ['mysql' => '5.0.7', 'mysqli' => '5.0.7'];
 // paypal
-$modversion['paypal'] = [];
-$modversion['paypal']['business'] = 'dugris93@gmail.com';
-$modversion['paypal']['item_name'] = _MI_XOO_CONTACT_DESC;
-$modversion['paypal']['amount'] = 0;
+$modversion['paypal']                  = [];
+$modversion['paypal']['business']      = 'dugris93@gmail.com';
+$modversion['paypal']['item_name']     = _MI_XOO_CONTACT_DESC;
+$modversion['paypal']['amount']        = 0;
 $modversion['paypal']['currency_code'] = 'EUR';
 
 // Admin menu
 $modversion['system_menu'] = 1;
 
 // Admin things
-$modversion['hasAdmin'] = 1;
+$modversion['hasAdmin']   = 1;
 $modversion['adminindex'] = 'admin/index.php';
-$modversion['adminmenu'] = 'admin/menu.php';
+$modversion['adminmenu']  = 'admin/menu.php';
 
 // Manage extension
-$modversion['extension'] = 0;
+$modversion['extension']         = 0;
 $modversion['extensionModule'][] = '';
 
 // Scripts to run upon installation or update
-$modversion['onInstall'] = 'include/oninstall.php';
-$modversion['onUpdate'] = 'include/onupdate.php';
+$modversion['onInstall']   = 'include/oninstall.php';
+$modversion['onUpdate']    = 'include/onupdate.php';
 $modversion['onUninstall'] = '';
 
 // JQuery

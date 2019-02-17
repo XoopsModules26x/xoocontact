@@ -96,7 +96,7 @@ class Contact extends \XoopsObject
     public function getValues($keys = null, $format = null, $maxDepth = null)
     {
         XoopsLoad::load('xoopsload');
-        $autoload = XoopsLoad::loadConfig('xoocontact');
+        $autoload = \XoopsLoad::loadConfig('xoocontact');
 
         $ret = parent::getValues();
         if (in_array($this->getVar('xoocontact_id'), $autoload['can_be_hidden'], true)) {

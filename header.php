@@ -22,9 +22,9 @@ include dirname(dirname(__DIR__)) . '/mainfile.php';
 include __DIR__ . '/class' . '/mail.php';
 
 XoopsLoad::load('system', 'system');
-$system = System::getInstance();
+$system = \System::getInstance();
 
-$xoops = Xoops::getInstance();
+$xoops = \Xoops::getInstance();
 
 if (isset($_POST)) {
     foreach ($_POST as $k => $v) {
@@ -41,4 +41,8 @@ $op = Request::getCmd('op', 'default');
 
 $helper = \XoopsModules\Xoocontact\Helper::getInstance();
 $contactConfig = $helper->loadConfig();
-$contactHandler = $helper->getHandler('Contact');
+//$contactHandler = $helper->getHandler('Contact');
+if (true != (null === $contactHandler ||
+      $contactHandler instanceof \XoopsModules\Xoocontact\ContactHandler)) {
+    $contactHandler = $helper->getHandler('Contact');
+}

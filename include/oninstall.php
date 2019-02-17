@@ -14,6 +14,7 @@
  * @package         Xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
+ * @version         $Id$
  */
 
 /**
@@ -22,13 +23,19 @@
 function xoops_module_install_xoocontact()
 {
     $xoops = \Xoops::getInstance();
-$path = dirname(__DIR__);
-$prefix = 'XoopsModules\\' . ucfirst(basename($path));
-    $psr4loader = new \Xoops\Core\Psr4ClassLoader();
-    $psr4loader->register();
-    $psr4loader->addNamespace($prefix, $path . '/class/');
-
     xoocontact_mkdirs($xoops->path(\XoopsBaseConfig::get('var-path')) . '/configs/xoocontact');
+
+    //    XoopsLoad::addMap(array('banners' => dirname(__DIR__) . '/class/helper.php'));
+    //    $helper = Banners::getInstance();
+
+//    $path = dirname(__DIR__);
+//    XoopsLoad::addMap([
+//                          \XoopsModules\Xoocontact\Helper::class => $path . '/class/Helper.php',
+//                      ]);
+//    $helper         = \XoopsModules\Xoocontact\Helper::getInstance();
+//    $contactHandler = $helper->getHandler('Contact');
+
+    require_once dirname(__DIR__) . '/preloads/autoloader.php';
 
     return true;
 }

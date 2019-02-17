@@ -31,8 +31,8 @@ class Helper extends HelperAbstract
     public $debug;
 
     /**
-     * @internal param $debug
      * @param bool $debug
+     * @internal param $debug
      */
     protected function __construct($debug = false)
     {
@@ -56,18 +56,18 @@ class Helper extends HelperAbstract
      */
     public function loadConfig()
     {
-//        XoopsLoad::load('xoopreferences', $this->dirname);
+        //        XoopsLoad::load('xoopreferences', $this->dirname);
 
         return Xoocontact\Preferences::getInstance()->getConfig();
     }
 
-//    /**
-//     * @return \XoopsModules\Xoocontact\Helper
-//     */
-//    public function contactHandler()
-//    {
-//        return $this->getHandler('Contact');
-//    }
+    //    /**
+    //     * @return \XoopsModules\Xoocontact\Helper
+    //     */
+    //    public function contactHandler()
+    //    {
+    //        return $this->getHandler('Contact');
+    //    }
 
     /**
      * @param bool $debug
@@ -102,7 +102,7 @@ class Helper extends HelperAbstract
     public function getHandler($name)
     {
         $ret = false;
-//        /** @var Connection $db */
+        //        /** @var Connection $db */
         $db = \XoopsDatabaseFactory::getConnection();
         $class = '\\XoopsModules\\' . ucfirst(mb_strtolower(basename(dirname(__DIR__)))) . '\\' . $name . 'Handler';
         $ret = new $class($db);

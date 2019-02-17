@@ -27,13 +27,13 @@ switch ($op) {
         }
 
         XoopsLoad::load('xoopscaptcha');
-        $xoopsCaptcha = XoopsCaptcha::getInstance();
+        $xoopsCaptcha = \XoopsCaptcha::getInstance();
         if (!$xoopsCaptcha->verify()) {
             $xoops->redirect('index.php', 3, $xoopsCaptcha->getMessage());
         }
 
         $contact = [];
-        $myts = MyTextSanitizer::getInstance();
+        $myts = \MyTextSanitizer::getInstance();
         $fields = $contactHandler->getDisplay();
         foreach ($fields as $k => $field) {
             $contact[$k] = $field->getValues();
@@ -74,6 +74,7 @@ switch ($op) {
 
         $xoops->tpl()->assign('moduletitle', $xoops->module->name());
         $xoops->tpl()->assign('welcome', $contactConfig['xoocontact_welcome']);
+        $xoops->tpl()->assign('security', $xoops->security()->createToken());
 
         //        $form = $xoops->getModuleForm(null, 'contact', 'xoocontact');
         //        $form->ContactForm();

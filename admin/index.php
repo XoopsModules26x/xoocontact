@@ -50,6 +50,7 @@ switch ($op) {
         $xoops->theme()->addStylesheet('modules/xoocontact/assets/css/moduladmin.css');
 
         // Get xoocontact_fields handler & datas
+        /** @var \XoopsModules\Xoocontact\ContactHandler $contactHandler */
         $fields = $contactHandler->renderAdminList();
         $xoops->tpl()->assign('fields', $fields);
 

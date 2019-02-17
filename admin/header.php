@@ -35,7 +35,7 @@ if (isset($_GET)) {
 $script_name = basename(Request::getString('SCRIPT_NAME', 'index', 'SERVER'), '.php'); //$_SERVER['SCRIPT_NAME'], '.php');
 
 XoopsLoad::load('system', 'system');
-$system = System::getInstance();
+$system = \System::getInstance();
 
 $xoops = \Xoops::getInstance();
 if ('about' !== $script_name) {
@@ -54,4 +54,8 @@ if ('about' !== $script_name && 'index' !== $script_name) {
 
 $helper = \XoopsModules\Xoocontact\Helper::getInstance();
 $contactConfig = $helper->loadConfig();
-$contactHandler = $helper->getHandler('Contact');
+
+//$contactHandler = $helper->getHandler('Contact');
+if (true != ($contactHandler instanceof \XoopsModules\Xoocontact\ContactHandler)) {
+    $contactHandler = $helper->getHandler('Contact');
+}

@@ -15,14 +15,14 @@
 
     <{foreach from=$fields item=field}>
         <tr class="<{cycle values="even,odd"}>">
-            <td class="txtleft bold">XOOCONTACT_FIELD<{$field.xoocontact_id}> / XOOCONTACT_VALUE<{$field.xoocontact_id}></td>
+            <td class="txtleft ">XOOCONTACT_FIELD<{$field.xoocontact_id}> / XOOCONTACT_VALUE<{$field.xoocontact_id}></td>
             <td class="txtleft bold"><{$field.xoocontact_description}></td>
 
             <td class="txtleft">
                 <{if $field.xoocontact_value}>
                     <{foreach from=$field.xoocontact_value item=data name=foo}>
                         <{$data}>
-                        <{if $smarty.foreach.foo.last == false}>
+                        <{if $smarty.foreach.foo.last === false}>
                             &nbsp;/&nbsp;
                         <{/if}>
                     <{/foreach}>
