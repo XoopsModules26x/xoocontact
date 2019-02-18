@@ -9,15 +9,14 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @package         xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-
 define('_MI_XOO_CONTACT_NAME', 'XooFoo - Contact Us');
-define('_MI_XOO_CONTACT_DESC', 'XooFoo - Contact Us<br />Module for xoops 2.6.0');
+define('_MI_XOO_CONTACT_DESC', 'XooFoo - Contact Us<br>Module for xoops 2.6.0');
 
 define('_MI_XOO_CONTACT_INDEX', 'Form manager');
 define('_MI_XOO_CONTACT_PREFERENCES', 'Preferences');

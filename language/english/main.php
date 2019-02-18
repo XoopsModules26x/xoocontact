@@ -9,13 +9,12 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @package         xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-
 define('_XOO_CONTACT_COPYMESSAGE', 'Do you require a copy of your email ?');
 
 define('_XOO_CONTACT_SUBMIT', 'Send');
@@ -25,3 +24,5 @@ define('_XOO_CONTACT_MESSAGESENT', 'Message to %s Send');
 define('_XOO_CONTACT_THANKYOU', 'Thank you for your interest in our site!');
 
 define('_XOO_CONTACT_SENTASCONFIRM', 'Your comments have been sent to: %s as a confirmation email.');
+
+define('_XOO_CONTACT_INVALIDMAIL', 'Invalid Email');

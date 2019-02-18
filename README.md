@@ -1,12 +1,12 @@
-![alt XOOPS CMS](http://xoops.org/images/logoXoops4GithubRepository.png)
+![alt XOOPS CMS](https://xoops.org/images/logoXoops4GithubRepository.png)
 ## xoocontact: module for [XOOPS CMS 2.6.0](https://github.com/XOOPS/XoopsCore)
 
 Contact module lets the visitors of your Website to contact you.
 
-[![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat)](LICENSE) 
+[![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mambax7/xoocontact/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mambax7/xoocontact/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/mambax7/xoocontact/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mambax7/xoocontact/build-status/master)
 
-Please visit us on http://xoops.org
+Please visit us on https://xoops.org
 
 **The upcoming "next generation" version of XOOPS CMS is being crafted on GitHub at: https://github.com/XOOPS**

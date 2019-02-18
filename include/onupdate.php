@@ -11,12 +11,16 @@
  *
  * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
- * @package         xoocontact
+ * @package         Xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-include __DIR__ . '/header.php';
+require_once __DIR__ . '/oninstall.php';
 
-$admin_page->displayAbout();
-
-$xoops->footer();
+/**
+ * @return bool
+ */
+function xoops_module_update_xoocontact()
+{
+    return xoops_module_install_xoocontact();
+}

@@ -8,6 +8,7 @@
 - added docs files (mamba)
 - using \XoopsBaseConfig (mamba)
 - replaced $system->cleanVars with Request:: (mamba)
+- namespaces, class autoloading (mamba)
 
 <hr><strong>1.0 Alpha 1         (2012-10)</strong>
 - First release (Dugris)
