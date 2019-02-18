@@ -14,7 +14,7 @@
  * @package         Xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
- * @version         $Id$
+
  */
 require_once __DIR__ . '/oninstall.php';
 
