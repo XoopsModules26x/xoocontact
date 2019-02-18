@@ -15,7 +15,6 @@
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
-
 define('_XOO_CONTACT_COPYMESSAGE', 'Avez-vous besoin d&#39;une copie de votre e-mail ?');
 
 define('_XOO_CONTACT_SUBMIT', 'Envoyer');
