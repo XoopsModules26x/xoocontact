@@ -28,12 +28,12 @@
 </style>
 <div id="xo-header">
     <div id="xo-logo">
-        <a href="{XOOCONTACT_SITE_URL}" title=""><img src="{XOOCONTACT_SITE_URL}/modules/xoocontact/assets/images/xoocontact_logo.png" alt=""/></a>
+        <a href="{XOOCONTACT_SITE_URL}" title=""><img src="{XOOCONTACT_SITE_URL}/modules/xoocontact/assets/images/xoocontact_logo.png" alt=""></a>
     </div>
     <div id="xo-message">
-        Bonjour {XOOCONTACT_VALUE1} {XOOCONTACT_VALUE2} {XOOCONTACT_VALUE3},<br/>
-        Nous vous remercions de votre intérêt pour notre site <a href="{XOOCONTACT_SITE_URL}" title="">{XOOCONTACT_SITE_NAME}</a>.<br/>
-        Votre message a été envoyé à notre webmaster.<br/>
+        Bonjour {XOOCONTACT_VALUE1} {XOOCONTACT_VALUE2} {XOOCONTACT_VALUE3},<br>
+        Nous vous remercions de votre intérêt pour notre site <a href="{XOOCONTACT_SITE_URL}" title="">{XOOCONTACT_SITE_NAME}</a>.<br>
+        Votre message a été envoyé à notre webmaster.<br>
     </div>
 </div>
 <div id="xo-content">

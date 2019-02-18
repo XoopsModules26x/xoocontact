@@ -1,4 +1,7 @@
 <?php
+
+namespace XoopsModules\Xoocontact;
+
 /**
  * Xoopreferences : Preferences Manager
  *
@@ -9,36 +12,35 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @package         Xoocontact
  * @since           2.6.0
  * @author          Laurent JEN (Aka DuGris)
  */
+use XoopsLoad;
+use XoopsModules\Xoocontact;
 
 /**
- * Class XooContactPreferences
+ * class Preferences
  */
-class XooContactPreferences
+class Preferences
 {
-    public $config = array();
-    public $basicConfig = array();
+    public $config = [];
+    public $basicConfig = [];
     public $configPath;
     public $configFile;
-    private $module_dirname = 'xoocontact';
+    private $moduleDirName = 'xoocontact';
 
-    /**
-     *
-     */
     public function __construct()
     {
-        $xoops            = Xoops::getInstance();
+        $xoops = \Xoops::getInstance();
         $this->configFile = 'config.' . $xoops->module->dirname() . '.php';
 
-        $this->configPath = \XoopsBaseConfig::get('var-path') . '/configs/' . $this->module_dirname . '/';
+        $this->configPath = \XoopsBaseConfig::get('var-path') . '/configs/' . $this->moduleDirName . '/';
 
         $this->basicConfig = $this->loadBasicConfig();
-        $this->config      = @$this->loadConfig();
+        $this->config = @$this->loadConfig();
 
         if (count($this->config) != count($this->basicConfig)) {
             $this->config = array_merge($this->basicConfig, $this->config);
@@ -46,16 +48,19 @@ class XooContactPreferences
         }
     }
 
-//    public function XooContactPreferences()
-//    {
-//        $this->__construct();
-//    }
+    //    public function Xoocontact\Preferences()
+    //    {
+    //        $this->__construct();
+    //    }
 
+    /**
+     * @return mixed
+     */
     public static function getInstance()
     {
         static $instance;
-        if (!isset($instance)) {
-            $class    = __CLASS__;
+        if (null === $instance) {
+            $class = __CLASS__;
             $instance = new $class();
         }
 
@@ -71,7 +76,7 @@ class XooContactPreferences
     }
 
     /**
-     * XooContactPreferences::loadConfig()
+     * Xoocontact\Preferences::loadConfig()
      *
      * @return array
      */
@@ -86,12 +91,13 @@ class XooContactPreferences
     }
 
     /**
-     * XooContactPreferences::loadBasicConfig()
+     * Xoocontact\Preferences::loadBasicConfig()
      *
      * @return array
      */
     public function loadBasicConfig()
     {
+        $config = '';
         if (file_exists($file_path = dirname(__DIR__) . '/include/' . $this->configFile)) {
             $config = include $file_path;
         }
@@ -100,7 +106,7 @@ class XooContactPreferences
     }
 
     /**
-     * XooContactPreferences::readConfig()
+     * Xoocontact\Preferences::readConfig()
      *
      * @return array
      */
@@ -108,28 +114,29 @@ class XooContactPreferences
     {
         $file_path = $this->configPath . $this->configFile;
         XoopsLoad::load('XoopsFile');
-        $file = XoopsFile::getHandler('file', $file_path);
+        $file = \XoopsFile::getHandler('file', $file_path);
 
         return eval(@$file->read());
     }
 
     /**
-     * XooContactPreferences::writeConfig()
+     * Xoocontact\Preferences::writeConfig()
      *
      * @param  array $config
      *
+     * @return array|bool
      * @internal param string $filename
-     * @return array
      */
     public function writeConfig($config)
     {
         if ($this->createPath($this->configPath)) {
             $file_path = $this->configPath . $this->configFile;
             XoopsLoad::load('XoopsFile');
-            $file = XoopsFile::getHandler('file', $file_path);
+            $file = \XoopsFile::getHandler('file', $file_path);
 
             return $file->write('return ' . var_export($config, true) . ';');
         }
+
         return null;
     }
 
@@ -141,22 +148,21 @@ class XooContactPreferences
      */
     private function createPath($pathname, $pathout = XOOPS_ROOT_PATH)
     {
-        $xoops    = Xoops::getInstance();
-        $pathname = substr($pathname, strlen(\XoopsBaseConfig::get('root-path')));
+        $xoops = \Xoops::getInstance();
+        $pathname = mb_substr($pathname, mb_strlen(\XoopsBaseConfig::get('root-path')));
         $pathname = str_replace(DIRECTORY_SEPARATOR, '/', $pathname);
 
-        $dest  = $pathout;
+        $dest = $pathout;
         $paths = explode('/', $pathname);
 
         foreach ($paths as $path) {
             if (!empty($path)) {
                 $dest = $dest . '/' . $path;
                 if (!is_dir($dest)) {
-                    if (!mkdir($dest, 0755)) {
+                    if (!mkdir($dest, 0755) && !is_dir($dest)) {
                         return false;
-                    } else {
-                        $this->writeIndex(\XoopsBaseConfig::get('uploads-path'), 'index.html', $dest);
                     }
+                    $this->writeIndex(\XoopsBaseConfig::get('uploads-path'), 'index.html', $dest);
                 }
             }
         }
@@ -195,16 +201,16 @@ class XooContactPreferences
      */
     public function prepare2Save($data = null, $module = true)
     {
-        if (!isset($data)) {
+        if (null === $data) {
             $data = $_POST;
         }
 
-        $config = array();
+        $config = [];
         foreach (array_keys($data) as $k) {
             if (is_array($data[$k])) {
                 $config[$k] = $this->prepare2Save($data[$k], false);
             } else {
-                if (!$module || false !== strpos($k, $this->module_dirname . '_')) {
+                if (!$module || false !== mb_strpos($k, $this->moduleDirName . '_')) {
                     $config[$k] = $data[$k];
                 }
             }
